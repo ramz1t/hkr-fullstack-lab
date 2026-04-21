@@ -1,5 +1,7 @@
 # hkr-fullstack-lab
 
+View live: [link](https://event-planner-ramz1.vercel.app)
+
 ## Requirements
 
 - Node.js 18+
