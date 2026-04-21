@@ -1,0 +1,12 @@
+.not-found {
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.not-found a,
+.not-found a:visited {
+    color: var(--accent);
+}
