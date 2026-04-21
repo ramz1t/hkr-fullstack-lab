@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import Navbar from './Navbar'
 import './Layout.css'
+import Footer from './Footer'
 
 export default function Layout() {
     return (
@@ -9,6 +10,7 @@ export default function Layout() {
             <main className="layout-main">
                 <Outlet />
             </main>
+            <Footer />
         </div>
     )
 }
