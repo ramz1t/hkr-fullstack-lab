@@ -17,11 +17,6 @@ const ticketSchema = new mongoose.Schema(
             enum: ['General', 'VIP'],
             default: 'General',
         },
-        price: {
-            type: Number,
-            required: [true, 'Price is required'],
-            min: [0, 'Price cannot be negative'],
-        },
         status: {
             type: String,
             enum: ['active', 'cancelled'],

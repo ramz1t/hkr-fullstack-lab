@@ -24,7 +24,6 @@ export interface Ticket {
     event: Event | string
     attendee: Attendee | string
     type: 'General' | 'VIP'
-    price: number
     status: 'active' | 'cancelled'
     createdAt: string
     updatedAt: string
@@ -36,5 +35,4 @@ export interface TicketFormData {
     event: string
     attendee: string
     type: 'General' | 'VIP'
-    price: number
 }
