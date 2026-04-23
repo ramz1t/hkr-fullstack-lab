@@ -4,6 +4,7 @@ const helmet = require('helmet')
 const morgan = require('morgan')
 
 const errorHandler = require('./middleware/errorHandler')
+const apiRouter = require('./routes')
 
 const app = express()
 
@@ -12,9 +13,7 @@ app.use(cors({ origin: process.env.CLIENT_ORIGIN || 'http://localhost:5173' }))
 app.use(express.json())
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'))
 
-// Routes
-
-// End routes
+app.use('/api', apiRouter)
 
 app.get('/health', (req, res) => res.json({ status: 'ok' }))
 app.use((req, res) =>
