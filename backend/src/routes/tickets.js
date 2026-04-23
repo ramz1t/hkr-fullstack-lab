@@ -7,8 +7,9 @@ const {
     updateTicket,
     deleteTicket,
 } = require('../controllers/ticketsController')
+const validateId = require('../middleware/validateId')
 
 router.route('/').get(getAllTickets).post(createTicket)
-router.route('/:id').get(getTicketById).put(updateTicket).delete(deleteTicket)
+router.route('/:id').all(validateId).get(getTicketById).put(updateTicket).delete(deleteTicket)
 
 module.exports = router
