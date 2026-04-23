@@ -7,6 +7,8 @@
     --accent: #00a2ff;
     --accent-bg: #def2ff;
     --accent-border: #00a2ff;
+    --danger: red;
+    --danger-border: red;
     --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
     --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -95,10 +97,13 @@
     background: var(--accent-bg);
     color: var(--text-h);
 }
+.btn-ghost.btn-danger {
+    color: var(--danger);
+}
 .btn-ghost.btn-danger:hover {
-    background: var(--accent-bg);
-    color: var(--text-h);
-    border-color: var(--accent-border);
+    background: var(--danger);
+    color: white;
+    border-color: var(--danger);
 }
 .btn-ghost.btn-sm {
     padding: 4px 8px;
