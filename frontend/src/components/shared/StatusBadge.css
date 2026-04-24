@@ -8,4 +8,5 @@
     border: 1px solid var(--accent-border);
     background: var(--accent-bg);
     color: var(--accent);
+    width: fit-content;
 }
