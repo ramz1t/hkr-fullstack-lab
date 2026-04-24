@@ -10,7 +10,7 @@ export const createEvent = (data: EventFormData) =>
 
 export const updateEvent = (id: string, data: Partial<EventFormData>) =>
     apiFetch<Event>(`/events/${id}`, {
-        method: 'PUT',
+        method: 'PATCH',
         body: JSON.stringify(data),
     })
 

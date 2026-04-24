@@ -14,7 +14,7 @@ export const createAttendee = (data: AttendeeFormData) =>
 
 export const updateAttendee = (id: string, data: Partial<AttendeeFormData>) =>
     apiFetch<Attendee>(`/attendees/${id}`, {
-        method: 'PUT',
+        method: 'PATCH',
         body: JSON.stringify(data),
     })
 

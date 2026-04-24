@@ -13,7 +13,7 @@ export const updateTicket = (
     data: Partial<TicketFormData> & { status?: 'active' | 'cancelled' }
 ) =>
     apiFetch<Ticket>(`/tickets/${id}`, {
-        method: 'PUT',
+        method: 'PATCH',
         body: JSON.stringify(data),
     })
 
