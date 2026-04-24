@@ -1,10 +1,12 @@
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import './Navbar.css'
 
 export default function Navbar() {
     return (
         <nav className="navbar">
-            <span className="navbar-brand">EventPlanner</span>
+            <Link to="/" className="navbar-brand">
+                EventPlanner
+            </Link>
             <ul className="navbar-links">
                 <li>
                     <NavLink

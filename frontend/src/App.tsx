@@ -4,6 +4,8 @@ import NotFound from './components/layout/NotFound'
 import EventsPage from './pages/EventsPage'
 import EventDetailPage from './pages/EventDetailPage'
 import TicketsPage from './pages/TicketsPage'
+import AttendeesPage from './pages/AttendeesPage'
+import AttendeeDetailPage from './pages/AttendeeDetailPage'
 
 function App() {
     return (
@@ -14,6 +16,11 @@ function App() {
                     <Route path="events" element={<EventsPage />} />
                     <Route path="events/:id" element={<EventDetailPage />} />
                     <Route path="tickets" element={<TicketsPage />} />
+                    <Route path="attendees" element={<AttendeesPage />} />
+                    <Route
+                        path="attendees/:id"
+                        element={<AttendeeDetailPage />}
+                    />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>
