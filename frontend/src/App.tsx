@@ -3,6 +3,7 @@ import Layout from './components/layout/Layout'
 import NotFound from './components/layout/NotFound'
 import EventsPage from './pages/EventsPage'
 import EventDetailPage from './pages/EventDetailPage'
+import TicketsPage from './pages/TicketsPage'
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
                     <Route index element={'homepage'} />
                     <Route path="events" element={<EventsPage />} />
                     <Route path="events/:id" element={<EventDetailPage />} />
+                    <Route path="tickets" element={<TicketsPage />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>
