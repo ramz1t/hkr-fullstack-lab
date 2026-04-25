@@ -3,7 +3,11 @@ const { Ticket } = require('../models')
 
 const getAllEvents = async (req, res, next) => {
     try {
-        const events = await Event.find().sort({ date: 1 })
+        const { status, search } = req.query
+        const filter = {}
+        if (status) filter.status = status
+        if (search) filter.title = { $regex: search, $options: 'i' }
+        const events = await Event.find(filter).sort({ date: 1 })
         res.json({ success: true, data: events })
     } catch (err) {
         next(err)

@@ -6,16 +6,30 @@ interface ApiResponse<T> {
     message?: string
 }
 
+interface ApiFetchOptions extends RequestInit {
+    params?: Record<string, string | undefined>
+}
+
 export async function apiFetch<T>(
     path: string,
-    options?: RequestInit
+    options?: ApiFetchOptions
 ): Promise<T> {
-    const res = await fetch(`${BASE_URL}${path}`, {
+    const { params, ...init } = options ?? {}
+    let url = `${BASE_URL}${path}`
+    if (params) {
+        const qs = new URLSearchParams(
+            Object.entries(params).filter(
+                (e): e is [string, string] => e[1] !== undefined
+            )
+        ).toString()
+        if (qs) url += `?${qs}`
+    }
+    const res = await fetch(url, {
         headers: {
             'Content-Type': 'application/json',
-            ...options?.headers,
+            ...init.headers,
         },
-        ...options,
+        ...init,
     })
 
     const json: ApiResponse<T> = await res.json()

@@ -1,7 +1,15 @@
 import { apiFetch } from './api'
 import type { Event, EventFormData, Ticket } from '../types'
 
-export const getEvents = () => apiFetch<Event[]>('/events')
+export interface EventsQuery {
+    status?: string
+    search?: string
+}
+
+export const getEvents = (query?: EventsQuery) =>
+    apiFetch<Event[]>('/events', {
+        params: query as Record<string, string | undefined>,
+    })
 
 export const getEvent = (id: string) => apiFetch<Event>(`/events/${id}`)
 

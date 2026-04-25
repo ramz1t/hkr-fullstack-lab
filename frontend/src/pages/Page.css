@@ -15,6 +15,23 @@
     margin: 0;
 }
 
+.filter-bar {
+    display: flex;
+    gap: var(--gap-half);
+    padding: var(--gap-half) var(--gap-2);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+}
+
+.filter-search {
+    flex: 1;
+    min-width: 0;
+}
+
+.filter-status {
+    width: auto;
+}
+
 .page-loading,
 .page-error {
     text-align: center;
