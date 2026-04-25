@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Outlet, useMatch } from 'react-router-dom'
 import type { Event, EventFormData } from '../../types'
 import {
     getEvents,
@@ -15,6 +16,8 @@ import '../Page.css'
 
 export default function EventsPage() {
     const { events } = useStore()
+    const match = useMatch('/events/:id')
+    const selectedId = match?.params?.id
     const [error, setError] = useState('')
     const [modalOpen, setModalOpen] = useState(false)
     const [editing, setEditing] = useState<Event | null>(null)
@@ -24,6 +27,7 @@ export default function EventsPage() {
             .then(events.set)
             .catch((err: Error) => setError(err.message))
             .finally(() => events.setLoading(false))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleSubmit = async (data: EventFormData) => {
@@ -62,7 +66,7 @@ export default function EventsPage() {
     return (
         <div>
             <div className="page-header">
-                <h1 className="page-title">Events</h1>
+                <h1 className="page-title">Events ({events.data.length})</h1>
                 <button className="btn-primary" onClick={openCreate}>
                     + New Event
                 </button>
@@ -75,15 +79,23 @@ export default function EventsPage() {
                 <EmptyState message="No events yet. Create your first one!" />
             )}
 
-            <div className="card-grid">
-                {events.data.map((event) => (
-                    <EventCard
-                        key={event._id}
-                        event={event}
-                        onEdit={openEdit}
-                        onDelete={handleDelete}
-                    />
-                ))}
+            <div className={`split-layout${selectedId ? ' has-detail' : ''}`}>
+                <div className="split-list">
+                    <div className="card-grid">
+                        {events.data.map((event) => (
+                            <EventCard
+                                key={event._id}
+                                event={event}
+                                isSelected={event._id === selectedId}
+                                onEdit={openEdit}
+                                onDelete={handleDelete}
+                            />
+                        ))}
+                    </div>
+                </div>
+                <div className="split-detail">
+                    <Outlet />
+                </div>
             </div>
 
             {modalOpen && (

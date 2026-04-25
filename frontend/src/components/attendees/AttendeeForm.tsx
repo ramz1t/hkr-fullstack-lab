@@ -32,9 +32,12 @@ export default function AttendeeForm({
     return (
         <form className="form" onSubmit={handle}>
             {error && <p className="form-error">{error}</p>}
-            <label className="form-label">
-                Name *
+            <div className="form-field">
+                <label className="form-label" htmlFor="at-name">
+                    Name
+                </label>
                 <input
+                    id="at-name"
                     className="form-input"
                     required
                     value={form.name}
@@ -42,10 +45,13 @@ export default function AttendeeForm({
                         setForm((f) => ({ ...f, name: e.target.value }))
                     }
                 />
-            </label>
-            <label className="form-label">
-                Email *
+            </div>
+            <div className="form-field">
+                <label className="form-label" htmlFor="at-email">
+                    Email
+                </label>
                 <input
+                    id="at-email"
                     className="form-input"
                     type="email"
                     required
@@ -54,10 +60,13 @@ export default function AttendeeForm({
                         setForm((f) => ({ ...f, email: e.target.value }))
                     }
                 />
-            </label>
-            <label className="form-label">
-                Phone
+            </div>
+            <div className="form-field">
+                <label className="form-label" htmlFor="at-phone">
+                    Phone
+                </label>
                 <input
+                    id="at-phone"
                     className="form-input"
                     type="tel"
                     value={form.phone}
@@ -65,7 +74,7 @@ export default function AttendeeForm({
                         setForm((f) => ({ ...f, phone: e.target.value }))
                     }
                 />
-            </label>
+            </div>
             <div className="form-actions">
                 <button type="button" className="btn-ghost" onClick={onCancel}>
                     Cancel

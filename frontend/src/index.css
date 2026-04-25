@@ -4,9 +4,9 @@
     --bg: #fff;
     --border: #e5e4e7;
     --code-bg: #f4f3ec;
-    --accent: #00a2ff;
-    --accent-bg: #def2ff;
-    --accent-border: #00a2ff;
+    --accent: #00936c;
+    --accent-bg: #bae3d7;
+    --accent-border: #00936c;
     --danger: red;
     --danger-border: red;
     --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -37,9 +37,9 @@
         --bg: #16171d;
         --border: #2e303a;
         --code-bg: #1f2028;
-        --accent: #3097d3;
-        --accent-bg: #143951;
-        --accent-border: #216a97;
+        --accent: #00936c;
+        --accent-bg: #00291e;
+        --accent-border: #00936c;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 }
@@ -53,6 +53,10 @@
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+}
+
+.hidden {
+    display: none;
 }
 
 /* buttons */
@@ -111,6 +115,11 @@
 }
 
 /* table */
+.table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -133,6 +142,9 @@
 .table tbody tr:hover {
     background: var(--accent-bg);
 }
+.table tbody tr.selected {
+    outline: 1px solid var(--accent-border);
+}
 .table-actions {
     display: flex;
     gap: 6px;
@@ -152,10 +164,13 @@
     flex-direction: column;
     gap: 14px;
 }
-.form-label {
+.form-field {
     display: flex;
     flex-direction: column;
     gap: 5px;
+}
+.form-label {
+    display: block;
     font-size: 14px;
     font-weight: 500;
     color: var(--text-h);
@@ -219,4 +234,16 @@ p {
 
 a {
     text-decoration: none;
+}
+
+label:has(+ input:required, + select:required, + textarea:required)::after {
+    content: ' *';
+    color: var(--accent);
+}
+    content: '*';
+}
+
+input,
+select {
+    width: 100%;
 }

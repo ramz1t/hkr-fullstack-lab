@@ -35,12 +35,6 @@ export default function AttendeeDetailPage() {
 
     return (
         <div>
-            <div className="page-header">
-                <Link to="/attendees" className="back-link">
-                    {'<'} Attendees
-                </Link>
-            </div>
-
             <div className="detail-hero">
                 <h1 className="page-title">{attendee.name}</h1>
                 <div className="detail-meta">
@@ -58,54 +52,58 @@ export default function AttendeeDetailPage() {
             {tickets.length === 0 ? (
                 <EmptyState message="No tickets registered yet." />
             ) : (
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Event</th>
-                            <th>Date</th>
-                            <th>Type</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {tickets.map((ticket) => {
-                            const ev = ticket.event as Event
-                            const dateStr = ev?.date
-                                ? new Date(ev.date).toLocaleDateString(
-                                      'en-SE',
-                                      {
-                                          year: 'numeric',
-                                          month: 'short',
-                                          day: 'numeric',
-                                      }
-                                  )
-                                : '—'
-                            return (
-                                <tr key={ticket._id}>
-                                    <td>
-                                        {ev?._id ? (
-                                            <Link
-                                                to={`/events/${ev._id}`}
-                                                className="table-link"
-                                            >
-                                                {ev.title}
-                                            </Link>
-                                        ) : (
-                                            '—'
-                                        )}
-                                    </td>
-                                    <td>{dateStr}</td>
-                                    <td>
-                                        <StatusBadge status={ticket.type} />
-                                    </td>
-                                    <td>
-                                        <StatusBadge status={ticket.status} />
-                                    </td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                </table>
+                <div className="table-wrap">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Event</th>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tickets.map((ticket) => {
+                                const ev = ticket.event as Event
+                                const dateStr = ev?.date
+                                    ? new Date(ev.date).toLocaleDateString(
+                                          'en-SE',
+                                          {
+                                              year: 'numeric',
+                                              month: 'short',
+                                              day: 'numeric',
+                                          }
+                                      )
+                                    : '—'
+                                return (
+                                    <tr key={ticket._id}>
+                                        <td>
+                                            {ev?._id ? (
+                                                <Link
+                                                    to={`/events/${ev._id}`}
+                                                    className="table-link"
+                                                >
+                                                    {ev.title}
+                                                </Link>
+                                            ) : (
+                                                '—'
+                                            )}
+                                        </td>
+                                        <td>{dateStr}</td>
+                                        <td>
+                                            <StatusBadge status={ticket.type} />
+                                        </td>
+                                        <td>
+                                            <StatusBadge
+                                                status={ticket.status}
+                                            />
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                </div>
             )}
         </div>
     )

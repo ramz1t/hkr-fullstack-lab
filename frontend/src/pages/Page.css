@@ -2,8 +2,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 24px;
     gap: 16px;
+    padding: 32px;
 }
 
 .page-title {
@@ -22,9 +22,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 32px 0 16px;
-    padding-top: 24px;
     border-top: 1px solid var(--border);
+    padding: 16px;
 }
 
 .section-title {
@@ -35,6 +34,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 16px;
+    padding: 16px;
 }
 
 .back-link {
@@ -49,14 +49,56 @@
     color: var(--text-h);
 }
 
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: start;
+    border-top: 1px solid var(--border);
+}
+
+.split-list {
+    position: sticky;
+    top: 16px;
+    min-height: calc(100svh - 120px);
+    max-height: calc(100svh - 120px);
+    overflow-y: auto;
+    border-right: 1px solid var(--border);
+}
+
+.split-detail .back-link {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .split-layout {
+        display: block;
+    }
+
+    .split-layout.has-detail .split-list {
+        display: none;
+    }
+
+    .split-layout:not(.has-detail) .split-detail {
+        display: none;
+    }
+
+    .split-detail .back-link {
+        display: inline-block;
+    }
+}
+
 .detail-hero {
-    margin-bottom: 16px;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    padding: 16px;
 }
 
-.detail-desc {
+.detail-hero .badge {
+    margin-bottom: 8px;
+}
+
+.detail-hero .detail-desc {
     color: var(--text);
     font-size: 15px;
     line-height: 1.6;

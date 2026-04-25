@@ -75,12 +75,6 @@ export default function EventDetailPage() {
 
     return (
         <div>
-            <div className="page-header">
-                <Link to="/events" className="back-link">
-                    {'<'} Events
-                </Link>
-            </div>
-
             <div className="detail-hero">
                 <StatusBadge status={event.status} />
                 <h1 className="page-title">{event.title}</h1>
@@ -111,25 +105,27 @@ export default function EventDetailPage() {
             {tickets.length === 0 ? (
                 <EmptyState message="No attendees registered yet." />
             ) : (
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Attendee</th>
-                            <th>Type</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {tickets.map((ticket) => (
-                            <TicketRow
-                                key={ticket._id}
-                                ticket={ticket}
-                                onCancel={handleCancel}
-                            />
-                        ))}
-                    </tbody>
-                </table>
+                <div className="table-wrap">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Attendee</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tickets.map((ticket) => (
+                                <TicketRow
+                                    key={ticket._id}
+                                    ticket={ticket}
+                                    onCancel={handleCancel}
+                                />
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             )}
 
             {modalOpen && (

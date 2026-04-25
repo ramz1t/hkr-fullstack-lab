@@ -41,9 +41,12 @@ export default function EventForm({
     return (
         <form className="form" onSubmit={handle}>
             {error && <p className="form-error">{error}</p>}
-            <label className="form-label">
-                Title *
+            <div className="form-field">
+                <label className="form-label" htmlFor="ev-title">
+                    Title
+                </label>
                 <input
+                    id="ev-title"
                     className="form-input"
                     required
                     value={form.title}
@@ -51,10 +54,13 @@ export default function EventForm({
                         setForm((f) => ({ ...f, title: e.target.value }))
                     }
                 />
-            </label>
-            <label className="form-label">
-                Description
+            </div>
+            <div className="form-field">
+                <label className="form-label" htmlFor="ev-description">
+                    Description
+                </label>
                 <textarea
+                    id="ev-description"
                     className="form-input"
                     rows={3}
                     value={form.description}
@@ -62,10 +68,13 @@ export default function EventForm({
                         setForm((f) => ({ ...f, description: e.target.value }))
                     }
                 />
-            </label>
-            <label className="form-label">
-                Date *
+            </div>
+            <div className="form-field">
+                <label className="form-label" htmlFor="ev-date">
+                    Date
+                </label>
                 <input
+                    id="ev-date"
                     className="form-input"
                     type="datetime-local"
                     required
@@ -74,20 +83,26 @@ export default function EventForm({
                         setForm((f) => ({ ...f, date: e.target.value }))
                     }
                 />
-            </label>
-            <label className="form-label">
-                Location
+            </div>
+            <div className="form-field">
+                <label className="form-label" htmlFor="ev-location">
+                    Location
+                </label>
                 <input
+                    id="ev-location"
                     className="form-input"
                     value={form.location}
                     onChange={(e) =>
                         setForm((f) => ({ ...f, location: e.target.value }))
                     }
                 />
-            </label>
-            <label className="form-label">
-                Capacity
+            </div>
+            <div className="form-field">
+                <label className="form-label" htmlFor="ev-capacity">
+                    Capacity
+                </label>
                 <input
+                    id="ev-capacity"
                     className="form-input"
                     type="number"
                     min={0}
@@ -99,10 +114,13 @@ export default function EventForm({
                         }))
                     }
                 />
-            </label>
-            <label className="form-label">
-                Status
+            </div>
+            <div className="form-field">
+                <label className="form-label" htmlFor="ev-status">
+                    Status
+                </label>
                 <select
+                    id="ev-status"
                     className="form-input"
                     value={form.status}
                     onChange={(e) =>
@@ -118,7 +136,7 @@ export default function EventForm({
                         </option>
                     ))}
                 </select>
-            </label>
+            </div>
             <div className="form-actions">
                 <button type="button" className="btn-ghost" onClick={onCancel}>
                     Cancel

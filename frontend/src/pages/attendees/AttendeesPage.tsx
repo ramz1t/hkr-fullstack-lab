@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Outlet, useMatch } from 'react-router-dom'
 import type { Attendee, AttendeeFormData } from '../../types'
 import {
     getAttendees,
@@ -15,6 +16,8 @@ import '../Page.css'
 
 export default function AttendeesPage() {
     const { attendees } = useStore()
+    const match = useMatch('/attendees/:id')
+    const selectedId = match?.params?.id
     const [error, setError] = useState('')
     const [modalOpen, setModalOpen] = useState(false)
     const [editing, setEditing] = useState<Attendee | null>(null)
@@ -24,6 +27,7 @@ export default function AttendeesPage() {
             .then(attendees.set)
             .catch((err: Error) => setError(err.message))
             .finally(() => attendees.setLoading(false))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleSubmit = async (data: AttendeeFormData) => {
@@ -62,7 +66,9 @@ export default function AttendeesPage() {
     return (
         <div>
             <div className="page-header">
-                <h1 className="page-title">Attendees</h1>
+                <h1 className="page-title">
+                    Attendees ({attendees.data.length})
+                </h1>
                 <button className="btn-primary" onClick={openCreate}>
                     + New Attendee
                 </button>
@@ -75,28 +81,40 @@ export default function AttendeesPage() {
                 <EmptyState message="No attendees yet. Add the first one!" />
             )}
 
-            {attendees.data.length > 0 && (
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {attendees.data.map((attendee) => (
-                            <AttendeeRow
-                                key={attendee._id}
-                                attendee={attendee}
-                                onEdit={openEdit}
-                                onDelete={handleDelete}
-                            />
-                        ))}
-                    </tbody>
-                </table>
-            )}
+            <div className={`split-layout${selectedId ? ' has-detail' : ''}`}>
+                <div className="split-list">
+                    {attendees.data.length > 0 && (
+                        <div className="table-wrap">
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {attendees.data.map((attendee) => (
+                                        <AttendeeRow
+                                            key={attendee._id}
+                                            attendee={attendee}
+                                            isSelected={
+                                                attendee._id === selectedId
+                                            }
+                                            onEdit={openEdit}
+                                            onDelete={handleDelete}
+                                        />
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
+                </div>
+                <div className="split-detail">
+                    <Outlet />
+                </div>
+            </div>
 
             {modalOpen && (
                 <Modal

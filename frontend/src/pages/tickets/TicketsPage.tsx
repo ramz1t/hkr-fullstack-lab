@@ -29,7 +29,9 @@ export default function TicketsPage() {
     return (
         <div>
             <div className="page-header">
-                <h1 className="page-title">All Tickets</h1>
+                <h1 className="page-title">
+                    All Tickets ({tickets.data.length})
+                </h1>
             </div>
 
             {tickets.isLoading && <p className="page-loading">Loading…</p>}
@@ -40,71 +42,75 @@ export default function TicketsPage() {
             )}
 
             {tickets.data.length > 0 && (
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Attendee</th>
-                            <th>Event</th>
-                            <th>Type</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {tickets.data.map((ticket) => {
-                            const attendee = ticket.attendee as Attendee
-                            const event = ticket.event as Event
-                            return (
-                                <tr key={ticket._id}>
-                                    <td>{ticket._id}</td>
-                                    <td>
-                                        {attendee?._id ? (
-                                            <Link
-                                                to={`/attendees/${attendee._id}`}
-                                                className="table-link"
-                                            >
-                                                {attendee.name}
-                                            </Link>
-                                        ) : (
-                                            '—'
-                                        )}
-                                    </td>
-                                    <td>
-                                        {event?._id ? (
-                                            <Link
-                                                to={`/events/${event._id}`}
-                                                className="table-link"
-                                            >
-                                                {event.title}
-                                            </Link>
-                                        ) : (
-                                            '—'
-                                        )}
-                                    </td>
-                                    <td>
-                                        <StatusBadge status={ticket.type} />
-                                    </td>
-                                    <td>
-                                        <StatusBadge status={ticket.status} />
-                                    </td>
-                                    <td className="table-actions">
-                                        {ticket.status === 'active' && (
-                                            <button
-                                                className="btn-ghost btn-sm btn-danger"
-                                                onClick={() =>
-                                                    handleCancel(ticket._id)
-                                                }
-                                            >
-                                                Cancel
-                                            </button>
-                                        )}
-                                    </td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                </table>
+                <div className="table-wrap">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Attendee</th>
+                                <th>Event</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tickets.data.map((ticket) => {
+                                const attendee = ticket.attendee as Attendee
+                                const event = ticket.event as Event
+                                return (
+                                    <tr key={ticket._id}>
+                                        <td>{ticket._id}</td>
+                                        <td>
+                                            {attendee?._id ? (
+                                                <Link
+                                                    to={`/attendees/${attendee._id}`}
+                                                    className="table-link"
+                                                >
+                                                    {attendee.name}
+                                                </Link>
+                                            ) : (
+                                                '—'
+                                            )}
+                                        </td>
+                                        <td>
+                                            {event?._id ? (
+                                                <Link
+                                                    to={`/events/${event._id}`}
+                                                    className="table-link"
+                                                >
+                                                    {event.title}
+                                                </Link>
+                                            ) : (
+                                                '—'
+                                            )}
+                                        </td>
+                                        <td>
+                                            <StatusBadge status={ticket.type} />
+                                        </td>
+                                        <td>
+                                            <StatusBadge
+                                                status={ticket.status}
+                                            />
+                                        </td>
+                                        <td className="table-actions">
+                                            {ticket.status === 'active' && (
+                                                <button
+                                                    className="btn-ghost btn-sm btn-danger"
+                                                    onClick={() =>
+                                                        handleCancel(ticket._id)
+                                                    }
+                                                >
+                                                    Cancel
+                                                </button>
+                                            )}
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                </div>
             )}
         </div>
     )

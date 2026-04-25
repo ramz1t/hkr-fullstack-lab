@@ -47,9 +47,12 @@ export default function TicketForm({
         <form className="form" onSubmit={handle}>
             {error && <p className="form-error">{error}</p>}
 
-            <label className="form-label">
-                Search attendee
+            <div className="form-field">
+                <label className="form-label" htmlFor="tk-search">
+                    Search attendee
+                </label>
                 <input
+                    id="tk-search"
                     className="form-input"
                     placeholder="Filter by name or email…"
                     value={search}
@@ -58,11 +61,14 @@ export default function TicketForm({
                         setSelectedAttendee('')
                     }}
                 />
-            </label>
+            </div>
 
-            <label className="form-label">
-                Attendee *
+            <div className="form-field">
+                <label className="form-label" htmlFor="tk-attendee">
+                    Attendee
+                </label>
                 <select
+                    id="tk-attendee"
                     className="form-input"
                     required
                     value={selectedAttendee}
@@ -75,11 +81,14 @@ export default function TicketForm({
                         </option>
                     ))}
                 </select>
-            </label>
+            </div>
 
-            <label className="form-label">
-                Ticket type
+            <div className="form-field">
+                <label className="form-label" htmlFor="tk-type">
+                    Ticket type
+                </label>
                 <select
+                    id="tk-type"
                     className="form-input"
                     value={type}
                     onChange={(e) =>
@@ -89,7 +98,7 @@ export default function TicketForm({
                     <option value="General">General</option>
                     <option value="VIP">VIP</option>
                 </select>
-            </label>
+            </div>
 
             <div className="form-actions">
                 <button type="button" className="btn-ghost" onClick={onCancel}>

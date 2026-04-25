@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import type { Event } from '../../types'
 import StatusBadge from '../shared/StatusBadge'
 import './EventCard.css'
@@ -6,6 +6,7 @@ import './EventCard.css'
 interface EventCardProps {
     event: Event
     ticketCount?: number
+    isSelected?: boolean
     onEdit: (event: Event) => void
     onDelete: (id: string) => void
 }
@@ -13,9 +14,11 @@ interface EventCardProps {
 export default function EventCard({
     event,
     ticketCount,
+    isSelected,
     onEdit,
     onDelete,
 }: EventCardProps) {
+    const navigate = useNavigate()
     const dateStr = new Date(event.date).toLocaleDateString('en-SE', {
         year: 'numeric',
         month: 'short',
@@ -23,16 +26,33 @@ export default function EventCard({
     })
 
     return (
-        <div className="event-card">
+        <div
+            className={`event-card${isSelected ? ' selected' : ''}`}
+            onClick={() => navigate(`/events/${event._id}`)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) =>
+                e.key === 'Enter' && navigate(`/events/${event._id}`)
+            }
+        >
             <div className="event-card-header">
                 <StatusBadge status={event.status} />
                 <div className="event-card-actions">
-                    <button className="btn-ghost" onClick={() => onEdit(event)}>
+                    <button
+                        className="btn-ghost"
+                        onClick={(e) => {
+                            e.stopPropagation()
+                            onEdit(event)
+                        }}
+                    >
                         Edit
                     </button>
                     <button
                         className="btn-ghost btn-danger"
-                        onClick={() => onDelete(event._id)}
+                        onClick={(e) => {
+                            e.stopPropagation()
+                            onDelete(event._id)
+                        }}
                     >
                         Delete
                     </button>

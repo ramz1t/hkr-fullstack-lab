@@ -6,13 +6,8 @@
 
 .layout-main {
     flex: 1;
-    padding: 32px;
-    max-width: 1100px;
+    padding: 0;
     width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
-
-    @media (max-width: 768px) {
-        padding: 20px 16px;
-    }
 }

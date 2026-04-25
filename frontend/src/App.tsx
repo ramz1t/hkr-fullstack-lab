@@ -16,17 +16,16 @@ function App() {
                 <Routes>
                     <Route element={<Layout />}>
                         <Route index element={<LandingPage />} />
-                        <Route path="events" element={<EventsPage />} />
-                        <Route
-                            path="events/:id"
-                            element={<EventDetailPage />}
-                        />
+                        <Route path="events" element={<EventsPage />}>
+                            <Route path=":id" element={<EventDetailPage />} />
+                        </Route>
                         <Route path="tickets" element={<TicketsPage />} />
-                        <Route path="attendees" element={<AttendeesPage />} />
-                        <Route
-                            path="attendees/:id"
-                            element={<AttendeeDetailPage />}
-                        />
+                        <Route path="attendees" element={<AttendeesPage />}>
+                            <Route
+                                path=":id"
+                                element={<AttendeeDetailPage />}
+                            />
+                        </Route>
                         <Route path="*" element={<NotFound />} />
                     </Route>
                 </Routes>
