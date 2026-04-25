@@ -54,6 +54,8 @@ const updateTicket = async (req, res, next) => {
             new: true,
             runValidators: true,
         })
+            .populate('event', 'title date location status')
+            .populate('attendee', 'name email phone')
         if (!ticket) {
             return res.status(404).json({ success: false, message: 'Ticket not found' })
         }
