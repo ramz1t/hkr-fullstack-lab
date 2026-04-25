@@ -84,7 +84,7 @@
     font-weight: 500;
     cursor: pointer;
     transition: opacity 0.15s;
-    font-weight: 600
+    font-weight: 600;
 }
 .btn-primary:hover {
     opacity: 0.88;
@@ -158,7 +158,7 @@
     outline: 1px solid var(--accent-border);
 }
 .table-actions > * {
-    margin-right: var(--gap-half)
+    margin-right: var(--gap-half);
 }
 .table-link {
     color: var(--text-h);
@@ -250,8 +250,6 @@ a {
 label:has(+ input:required, + select:required, + textarea:required)::after {
     content: ' *';
     color: var(--accent);
-}
-    content: '*';
 }
 
 input,
