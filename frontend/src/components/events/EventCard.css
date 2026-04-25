@@ -2,7 +2,7 @@
     background: var(--bg);
     outline: 1px solid var(--border);
     border-radius: 10px;
-    padding: 16px;
+    padding: var(--gap-1);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -31,6 +31,7 @@
     color: var(--text-h);
     text-decoration: none;
     line-height: 1.3;
+    width: fit-content;
 }
 
 .event-card-title:hover {

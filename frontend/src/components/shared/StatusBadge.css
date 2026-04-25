@@ -23,3 +23,11 @@
 .badge-vip {
     --color: #d97706;
 }
+
+.badge-upcoming {
+    --color: rgb(191, 169, 1);
+}
+
+.badge-ongoing {
+    --color: blue;
+}

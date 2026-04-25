@@ -11,6 +11,11 @@
     --danger-border: red;
     --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
+    --gap-base: 16px;
+    --gap-half: calc(var(--gap-base) / 2);
+    --gap-1: var(--gap-base);
+    --gap-2: calc(var(--gap-base) * 2);
+
     --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
     --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
     --mono: ui-monospace, Consolas, monospace;
@@ -28,7 +33,13 @@
     @media (max-width: 1024px) {
         font-size: 16px;
     }
+
+    --nav-h: 60px;
 }
+
+/* * {
+    outline: 1px solid red;
+} */
 
 @media (prefers-color-scheme: dark) {
     :root {
@@ -64,7 +75,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 8px 16px;
+    padding: var(--gap-half) var(--gap-1);
     border-radius: 7px;
     border: none;
     background: var(--accent);
@@ -73,6 +84,7 @@
     font-weight: 500;
     cursor: pointer;
     transition: opacity 0.15s;
+    font-weight: 600
 }
 .btn-primary:hover {
     opacity: 0.88;
@@ -110,7 +122,7 @@
     border-color: var(--danger);
 }
 .btn-ghost.btn-sm {
-    padding: 4px 8px;
+    padding: 4px var(--gap-half);
     font-size: 13px;
 }
 
@@ -145,9 +157,8 @@
 .table tbody tr.selected {
     outline: 1px solid var(--accent-border);
 }
-.table-actions {
-    display: flex;
-    gap: 6px;
+.table-actions > * {
+    margin-right: var(--gap-half)
 }
 .table-link {
     color: var(--text-h);
@@ -176,7 +187,7 @@
     color: var(--text-h);
 }
 .form-input {
-    padding: 8px 10px;
+    padding: var(--gap-half) 10px;
     border-radius: 6px;
     border: 1px solid var(--border);
     background: var(--bg);
@@ -192,7 +203,7 @@
 .form-actions {
     display: flex;
     justify-content: flex-end;
-    gap: 8px;
+    gap: var(--gap-half);
     margin-top: 4px;
 }
 .form-error {
@@ -201,7 +212,7 @@
     margin: 0;
     background: var(--code-bg);
     border: 1px solid var(--border);
-    padding: 8px 12px;
+    padding: var(--gap-half) 12px;
     border-radius: 6px;
 }
 
@@ -215,7 +226,7 @@ h3 {
     font-family: var(--heading);
     font-weight: 600;
     color: var(--text-h);
-    margin: 0 0 8px;
+    margin: 0 0 var(--gap-half);
 }
 
 h1 {

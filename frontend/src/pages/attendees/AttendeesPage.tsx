@@ -70,7 +70,7 @@ export default function AttendeesPage() {
                     Attendees ({attendees.data.length})
                 </h1>
                 <button className="btn-primary" onClick={openCreate}>
-                    + New Attendee
+                    New Attendee
                 </button>
             </div>
 

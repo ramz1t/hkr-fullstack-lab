@@ -68,7 +68,7 @@ export default function EventsPage() {
             <div className="page-header">
                 <h1 className="page-title">Events ({events.data.length})</h1>
                 <button className="btn-primary" onClick={openCreate}>
-                    + New Event
+                    New Event
                 </button>
             </div>
 

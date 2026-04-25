@@ -11,7 +11,7 @@
 .landing-hero {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--gap-1);
 }
 
 .landing-title {
@@ -38,7 +38,7 @@
 .landing-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 16px;
+    gap: var(--gap-1);
 }
 
 .landing-card {
