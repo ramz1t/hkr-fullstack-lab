@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import type { Attendee, Event } from '../../types'
-import { getTickets, updateTicket } from '../../services/tickets'
+import { getTickets, updateTicket, deleteTicket } from '../../services/tickets'
 import { useStore } from '../../store/StoreContext'
 import StatusBadge from '../../components/shared/StatusBadge'
 import EmptyState from '../../components/shared/EmptyState'
@@ -24,6 +24,12 @@ export default function TicketsPage() {
         tickets.set(
             tickets.data.map((t) => (t._id === updated._id ? updated : t))
         )
+    }
+
+    const handleDelete = async (id: string) => {
+        if (!confirm('Delete this ticket permanently?')) return
+        await deleteTicket(id)
+        tickets.set(tickets.data.filter((t) => t._id !== id))
     }
 
     return (
@@ -104,6 +110,14 @@ export default function TicketsPage() {
                                                     Cancel
                                                 </button>
                                             )}
+                                            <button
+                                                className="btn-ghost btn-sm btn-danger"
+                                                onClick={() =>
+                                                    handleDelete(ticket._id)
+                                                }
+                                            >
+                                                Delete
+                                            </button>
                                         </td>
                                     </tr>
                                 )

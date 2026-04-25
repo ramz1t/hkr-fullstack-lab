@@ -4,7 +4,11 @@ import type { Event, Ticket, Attendee, TicketFormData } from '../../types'
 import { getEvent } from '../../services/events'
 import { getEventTickets } from '../../services/events'
 import { getAttendees } from '../../services/attendees'
-import { createTicket, updateTicket } from '../../services/tickets'
+import {
+    createTicket,
+    updateTicket,
+    deleteTicket,
+} from '../../services/tickets'
 import StatusBadge from '../../components/shared/StatusBadge'
 import Modal from '../../components/shared/Modal'
 import EmptyState from '../../components/shared/EmptyState'
@@ -60,6 +64,12 @@ export default function EventDetailPage() {
         )
     }
 
+    const handleDelete = async (ticketId: string) => {
+        if (!confirm('Delete this ticket permanently?')) return
+        await deleteTicket(ticketId)
+        setTickets((prev) => prev.filter((t) => t._id !== ticketId))
+    }
+
     if (loading) return <p className="page-loading">Loading…</p>
     if (error) return <p className="page-error">{error}</p>
     if (!event) return null
@@ -98,7 +108,7 @@ export default function EventDetailPage() {
                     className="btn-primary"
                     onClick={() => setModalOpen(true)}
                 >
-                    + Register Attendee
+                    Register Attendee
                 </button>
             </div>
 
@@ -121,6 +131,7 @@ export default function EventDetailPage() {
                                     key={ticket._id}
                                     ticket={ticket}
                                     onCancel={handleCancel}
+                                    onDelete={handleDelete}
                                 />
                             ))}
                         </tbody>

@@ -5,9 +5,14 @@ import StatusBadge from '../shared/StatusBadge'
 interface TicketRowProps {
     ticket: Ticket
     onCancel: (id: string) => void
+    onDelete: (id: string) => void
 }
 
-export default function TicketRow({ ticket, onCancel }: TicketRowProps) {
+export default function TicketRow({
+    ticket,
+    onCancel,
+    onDelete,
+}: TicketRowProps) {
     const attendee = ticket.attendee as Attendee
 
     return (
@@ -50,6 +55,12 @@ export default function TicketRow({ ticket, onCancel }: TicketRowProps) {
                         Cancel
                     </button>
                 )}
+                <button
+                    className="btn-ghost btn-sm btn-danger"
+                    onClick={() => onDelete(ticket._id)}
+                >
+                    Delete
+                </button>
             </td>
         </tr>
     )
