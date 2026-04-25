@@ -1,12 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Outlet, useMatch } from 'react-router-dom'
-import type { Attendee, AttendeeFormData } from '../../types'
-import {
-    getAttendees,
-    createAttendee,
-    updateAttendee,
-    deleteAttendee,
-} from '../../services/attendees'
+import type { AttendeeFormData } from '../../types'
+import { getAttendees, createAttendee } from '../../services/attendees'
 import { useStore } from '../../store/StoreContext'
 import AttendeeRow from '../../components/attendees/AttendeeRow'
 import AttendeeForm from '../../components/attendees/AttendeeForm'
@@ -20,7 +15,6 @@ export default function AttendeesPage() {
     const selectedId = match?.params?.id
     const [error, setError] = useState('')
     const [modalOpen, setModalOpen] = useState(false)
-    const [editing, setEditing] = useState<Attendee | null>(null)
 
     useEffect(() => {
         getAttendees()
@@ -31,37 +25,13 @@ export default function AttendeesPage() {
     }, [])
 
     const handleSubmit = async (data: AttendeeFormData) => {
-        if (editing) {
-            const updated = await updateAttendee(editing._id, data)
-            attendees.set(
-                attendees.data.map((a) => (a._id === updated._id ? updated : a))
-            )
-        } else {
-            const created = await createAttendee(data)
-            attendees.set([...attendees.data, created])
-        }
+        const created = await createAttendee(data)
+        attendees.set([...attendees.data, created])
         setModalOpen(false)
-        setEditing(null)
     }
 
-    const handleDelete = async (id: string) => {
-        if (!confirm('Delete this attendee?')) return
-        await deleteAttendee(id)
-        attendees.set(attendees.data.filter((a) => a._id !== id))
-    }
-
-    const openCreate = () => {
-        setEditing(null)
-        setModalOpen(true)
-    }
-    const openEdit = (attendee: Attendee) => {
-        setEditing(attendee)
-        setModalOpen(true)
-    }
-    const closeModal = () => {
-        setModalOpen(false)
-        setEditing(null)
-    }
+    const openCreate = () => setModalOpen(true)
+    const closeModal = () => setModalOpen(false)
 
     return (
         <div>
@@ -90,7 +60,6 @@ export default function AttendeesPage() {
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone</th>
-                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -101,8 +70,6 @@ export default function AttendeesPage() {
                                             isSelected={
                                                 attendee._id === selectedId
                                             }
-                                            onEdit={openEdit}
-                                            onDelete={handleDelete}
                                         />
                                     ))}
                                 </tbody>
@@ -116,12 +83,8 @@ export default function AttendeesPage() {
             </div>
 
             {modalOpen && (
-                <Modal
-                    title={editing ? 'Edit Attendee' : 'New Attendee'}
-                    onClose={closeModal}
-                >
+                <Modal title="New Attendee" onClose={closeModal}>
                     <AttendeeForm
-                        initial={editing ?? undefined}
                         onSubmit={handleSubmit}
                         onCancel={closeModal}
                     />

@@ -7,16 +7,12 @@ interface EventCardProps {
     event: Event
     ticketCount?: number
     isSelected?: boolean
-    onEdit: (event: Event) => void
-    onDelete: (id: string) => void
 }
 
 export default function EventCard({
     event,
     ticketCount,
     isSelected,
-    onEdit,
-    onDelete,
 }: EventCardProps) {
     const navigate = useNavigate()
     const dateStr = new Date(event.date).toLocaleDateString('en-SE', {
@@ -37,33 +33,11 @@ export default function EventCard({
         >
             <div className="event-card-header">
                 <StatusBadge status={event.status} />
-                <div className="event-card-actions">
-                    <button
-                        className="btn-ghost"
-                        onClick={(e) => {
-                            e.stopPropagation()
-                            onEdit(event)
-                        }}
-                    >
-                        Edit
-                    </button>
-                    <button
-                        className="btn-ghost btn-danger"
-                        onClick={(e) => {
-                            e.stopPropagation()
-                            onDelete(event._id)
-                        }}
-                    >
-                        Delete
-                    </button>
-                </div>
             </div>
             <Link to={`/events/${event._id}`} className="event-card-title">
                 {event.title}
             </Link>
-            {event.description && (
-                <p className="event-card-desc">{event.description}</p>
-            )}
+            <p className="event-card-desc">{event.description}</p>
             <div className="event-card-meta">
                 {event.location && <span>{event.location}</span>}
                 <span>{dateStr}</span>

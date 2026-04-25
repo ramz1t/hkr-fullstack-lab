@@ -125,6 +125,12 @@
     line-height: 1.6;
 }
 
+.detail-actions {
+    display: flex;
+    gap: var(--gap-half);
+    margin-top: var(--gap-half);
+}
+
 .detail-meta {
     display: flex;
     flex-wrap: wrap;

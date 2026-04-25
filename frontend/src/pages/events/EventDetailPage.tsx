@@ -1,8 +1,18 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { useParams } from 'react-router-dom'
-import type { Event, Ticket, Attendee, TicketFormData } from '../../types'
-import { getEvent } from '../../services/events'
-import { getEventTickets } from '../../services/events'
+import { useParams, useNavigate } from 'react-router-dom'
+import type {
+    Event,
+    Ticket,
+    Attendee,
+    TicketFormData,
+    EventFormData,
+} from '../../types'
+import {
+    getEvent,
+    getEventTickets,
+    updateEvent,
+    deleteEvent,
+} from '../../services/events'
 import { getAttendees } from '../../services/attendees'
 import {
     createTicket,
@@ -15,10 +25,12 @@ import Modal from '../../components/shared/Modal'
 import EmptyState from '../../components/shared/EmptyState'
 import TicketRow from '../../components/tickets/TicketRow'
 import TicketForm from '../../components/tickets/TicketForm'
+import EventForm from '../../components/events/EventForm'
 import '../Page.css'
 
 export default function EventDetailPage() {
     const { id } = useParams<{ id: string }>()
+    const navigate = useNavigate()
     const { events } = useStore()
     const [event, setEvent] = useState<Event | null>(null)
     const [tickets, setTickets] = useState<Ticket[]>([])
@@ -26,6 +38,7 @@ export default function EventDetailPage() {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
     const [modalOpen, setModalOpen] = useState(false)
+    const [editOpen, setEditOpen] = useState(false)
     const prevStatusRef = useRef<string | null>(null)
 
     // syncs event from store when EventsPage updates it
@@ -91,6 +104,22 @@ export default function EventDetailPage() {
         setTickets((prev) => prev.filter((t) => t._id !== ticketId))
     }
 
+    const handleEditEvent = async (data: EventFormData) => {
+        const updated = await updateEvent(id!, data)
+        events.set(
+            events.data.map((e) => (e._id === updated._id ? updated : e))
+        )
+        setEvent(updated)
+        setEditOpen(false)
+    }
+
+    const handleDeleteEvent = async () => {
+        if (!confirm('Delete this event and all its tickets?')) return
+        await deleteEvent(id!)
+        events.set(events.data.filter((e) => e._id !== id))
+        navigate('/events')
+    }
+
     if (loading) return <p className="page-loading">Loading…</p>
     if (error) return <p className="page-error">{error}</p>
     if (!event) return null
@@ -118,6 +147,20 @@ export default function EventDetailPage() {
                     {event.capacity != null && (
                         <span>Capacity: {event.capacity}</span>
                     )}
+                </div>
+                <div className="detail-actions">
+                    <button
+                        className="btn-ghost"
+                        onClick={() => setEditOpen(true)}
+                    >
+                        Edit
+                    </button>
+                    <button
+                        className="btn-ghost btn-danger"
+                        onClick={handleDeleteEvent}
+                    >
+                        Delete
+                    </button>
                 </div>
             </div>
 
@@ -170,6 +213,16 @@ export default function EventDetailPage() {
                         attendees={attendees}
                         onSubmit={handleRegister}
                         onCancel={() => setModalOpen(false)}
+                    />
+                </Modal>
+            )}
+
+            {editOpen && (
+                <Modal title="Edit Event" onClose={() => setEditOpen(false)}>
+                    <EventForm
+                        initial={event}
+                        onSubmit={handleEditEvent}
+                        onCancel={() => setEditOpen(false)}
                     />
                 </Modal>
             )}

@@ -1,17 +1,28 @@
 import { useState, useEffect, useCallback } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import type { Attendee, Ticket, Event } from '../../types'
-import { getAttendee, getAttendeeTickets } from '../../services/attendees'
+import { useParams, Link, useNavigate } from 'react-router-dom'
+import type { Attendee, Ticket, Event, AttendeeFormData } from '../../types'
+import {
+    getAttendee,
+    getAttendeeTickets,
+    updateAttendee,
+    deleteAttendee,
+} from '../../services/attendees'
+import { useStore } from '../../store/StoreContext'
 import StatusBadge from '../../components/shared/StatusBadge'
 import EmptyState from '../../components/shared/EmptyState'
+import Modal from '../../components/shared/Modal'
+import AttendeeForm from '../../components/attendees/AttendeeForm'
 import '../Page.css'
 
 export default function AttendeeDetailPage() {
     const { id } = useParams<{ id: string }>()
+    const navigate = useNavigate()
+    const { attendees } = useStore()
     const [attendee, setAttendee] = useState<Attendee | null>(null)
     const [tickets, setTickets] = useState<Ticket[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
+    const [editOpen, setEditOpen] = useState(false)
 
     const load = useCallback(() => {
         if (!id) return
@@ -33,6 +44,22 @@ export default function AttendeeDetailPage() {
     if (error) return <p className="page-error">{error}</p>
     if (!attendee) return null
 
+    const handleEdit = async (data: AttendeeFormData) => {
+        const updated = await updateAttendee(id!, data)
+        attendees.set(
+            attendees.data.map((a) => (a._id === updated._id ? updated : a))
+        )
+        setAttendee(updated)
+        setEditOpen(false)
+    }
+
+    const handleDelete = async () => {
+        if (!confirm('Delete this attendee?')) return
+        await deleteAttendee(id!)
+        attendees.set(attendees.data.filter((a) => a._id !== id))
+        navigate('/attendees')
+    }
+
     return (
         <div>
             <div className="detail-hero">
@@ -40,6 +67,20 @@ export default function AttendeeDetailPage() {
                 <div className="detail-meta">
                     <span>{attendee.email}</span>
                     {attendee.phone && <span>{attendee.phone}</span>}
+                </div>
+                <div className="detail-actions">
+                    <button
+                        className="btn-ghost"
+                        onClick={() => setEditOpen(true)}
+                    >
+                        Edit
+                    </button>
+                    <button
+                        className="btn-ghost btn-danger"
+                        onClick={handleDelete}
+                    >
+                        Delete
+                    </button>
                 </div>
             </div>
 
@@ -104,6 +145,16 @@ export default function AttendeeDetailPage() {
                         </tbody>
                     </table>
                 </div>
+            )}
+
+            {editOpen && (
+                <Modal title="Edit Attendee" onClose={() => setEditOpen(false)}>
+                    <AttendeeForm
+                        initial={attendee}
+                        onSubmit={handleEdit}
+                        onCancel={() => setEditOpen(false)}
+                    />
+                </Modal>
             )}
         </div>
     )

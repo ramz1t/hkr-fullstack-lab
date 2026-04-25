@@ -1,12 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Outlet, useMatch } from 'react-router-dom'
-import type { Event, EventFormData } from '../../types'
-import {
-    getEvents,
-    createEvent,
-    updateEvent,
-    deleteEvent,
-} from '../../services/events'
+import type { EventFormData } from '../../types'
+import { getEvents, createEvent } from '../../services/events'
 import { useStore } from '../../store/StoreContext'
 import EventCard from '../../components/events/EventCard'
 import EventForm from '../../components/events/EventForm'
@@ -27,7 +22,6 @@ export default function EventsPage() {
     const selectedId = match?.params?.id
     const [error, setError] = useState('')
     const [modalOpen, setModalOpen] = useState(false)
-    const [editing, setEditing] = useState<Event | null>(null)
     const [search, setSearch] = useState('')
     const [status, setStatus] = useState('')
     const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -62,37 +56,13 @@ export default function EventsPage() {
     }
 
     const handleSubmit = async (data: EventFormData) => {
-        if (editing) {
-            const updated = await updateEvent(editing._id, data)
-            events.set(
-                events.data.map((e) => (e._id === updated._id ? updated : e))
-            )
-        } else {
-            const created = await createEvent(data)
-            events.set([...events.data, created])
-        }
+        const created = await createEvent(data)
+        events.set([...events.data, created])
         setModalOpen(false)
-        setEditing(null)
     }
 
-    const handleDelete = async (id: string) => {
-        if (!confirm('Delete this event?')) return
-        await deleteEvent(id)
-        events.set(events.data.filter((e) => e._id !== id))
-    }
-
-    const openCreate = () => {
-        setEditing(null)
-        setModalOpen(true)
-    }
-    const openEdit = (event: Event) => {
-        setEditing(event)
-        setModalOpen(true)
-    }
-    const closeModal = () => {
-        setModalOpen(false)
-        setEditing(null)
-    }
+    const openCreate = () => setModalOpen(true)
+    const closeModal = () => setModalOpen(false)
 
     return (
         <div>
@@ -140,8 +110,6 @@ export default function EventsPage() {
                                     key={event._id}
                                     event={event}
                                     isSelected={event._id === selectedId}
-                                    onEdit={openEdit}
-                                    onDelete={handleDelete}
                                 />
                             ))}
                         </div>
@@ -153,15 +121,8 @@ export default function EventsPage() {
             </div>
 
             {modalOpen && (
-                <Modal
-                    title={editing ? 'Edit Event' : 'New Event'}
-                    onClose={closeModal}
-                >
-                    <EventForm
-                        initial={editing ?? undefined}
-                        onSubmit={handleSubmit}
-                        onCancel={closeModal}
-                    />
+                <Modal title="New Event" onClose={closeModal}>
+                    <EventForm onSubmit={handleSubmit} onCancel={closeModal} />
                 </Modal>
             )}
         </div>
