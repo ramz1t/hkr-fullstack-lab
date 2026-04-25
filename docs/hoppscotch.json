@@ -1,0 +1,3998 @@
+{
+  "v": 11,
+  "name": "fullstack-lab",
+  "folders": [
+    {
+      "v": 11,
+      "name": "events",
+      "folders": [],
+      "requests": [
+        {
+          "v": "17",
+          "name": "Create event",
+          "method": "POST",
+          "endpoint": "<<url>>/events",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"description\": \"Desc\",\n  \"location\": \"Moscow\",\n  \"capacity\": 1500,\n  \"status\": \"wrong\"\n}\n"
+          },
+          "requestVariables": [],
+          "responses": {
+            "Wrong payload": {
+              "name": "Wrong payload",
+              "originalRequest": {
+                "v": "6",
+                "name": "Create event",
+                "method": "POST",
+                "endpoint": "<<url>>/events",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": "application/json",
+                  "body": "{\n  \"description\": \"Desc\",\n  \"location\": \"Moscow\",\n  \"capacity\": 1500,\n  \"status\": \"wrong\"\n}\n"
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": []
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "148"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:39:47 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"94-yZVipZzktDxEg47NXikjS8VIpzM\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":false,\"message\":\"Validation failed\",\"errors\":{\"date\":\"date is required\",\"title\":\"title is required\",\"status\":\"Invalid value for status\"}}"
+            },
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "Create event",
+                "method": "POST",
+                "endpoint": "<<url>>/events",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": "application/json",
+                  "body": "{\n  \"title\": \"New event\",\n  \"description\": \"Desc\",\n  \"date\": \"2026-04-25T00:33\",\n  \"location\": \"Moscow\",\n  \"capacity\": 1500,\n  \"status\": \"upcoming\"\n}\n"
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": []
+              },
+              "status": "Created",
+              "code": 201,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "275"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:34:21 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"113-Af3BHT5e/JOdfjhd5cIvBWmV0dc\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{\"title\":\"New event\",\"description\":\"Desc\",\"date\":\"2026-04-24T22:33:00.000Z\",\"location\":\"Moscow\",\"capacity\":1500,\"status\":\"upcoming\",\"_id\":\"69ebefed13eea9582db9e980\",\"createdAt\":\"2026-04-24T22:34:21.204Z\",\"updatedAt\":\"2026-04-24T22:34:21.204Z\",\"__v\":0}}"
+            }
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "List events",
+          "method": "GET",
+          "endpoint": "<<url>>/events",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "List events",
+                "method": "GET",
+                "endpoint": "<<url>>/events",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": []
+              },
+              "status": "OK",
+              "code": 200,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "274"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Thu, 23 Apr 2026 15:46:47 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"112-iqjkewJ15/XLo17KgaTgP44fX84\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":[{\"_id\":\"69e6b0195d885501e420b56b\",\"title\":\"Jazz\",\"description\":\"CPH\",\"date\":\"2026-04-20T17:00:00.000Z\",\"location\":\"Copenhagen\",\"capacity\":150,\"status\":\"upcoming\",\"createdAt\":\"2026-04-20T23:00:41.493Z\",\"updatedAt\":\"2026-04-21T00:12:44.864Z\",\"__v\":0}]}"
+            }
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Get event",
+          "method": "GET",
+          "endpoint": "<<url>>/events/<<id>>",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [
+            {
+              "key": "id",
+              "value": "69ea5d085bf81d8b9c871150",
+              "active": true
+            }
+          ],
+          "responses": {
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "Get event",
+                "method": "GET",
+                "endpoint": "<<url>>/events/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ea5d085bf81d8b9c871150",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "OK",
+              "code": 200,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "content-length",
+                  "value": "344"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:17:10 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"158-I5DrXkX1HIqLmGlVkeCL7U4DxAQ\""
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{\"_id\":\"69ea5d085bf81d8b9c871150\",\"title\":\"Sabaton\",\"description\":\"History, fire, show and much more! Book your tickets now\",\"date\":\"2025-12-17T20:00:00.000Z\",\"location\":\"Royal Arena, Copenhagen\",\"capacity\":35000,\"status\":\"completed\",\"createdAt\":\"2026-04-23T17:55:20.710Z\",\"updatedAt\":\"2026-04-23T17:55:39.365Z\",\"__v\":0}}"
+            },
+            "Not found": {
+              "name": "Not found",
+              "originalRequest": {
+                "v": "6",
+                "name": "Get event",
+                "method": "GET",
+                "endpoint": "<<url>>/events/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ea5d085bf81d8b9c87115",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "Not Found",
+              "code": 404,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "48"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:16:48 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"30-rfXNN9D4GFyk6qfET7IqMTK5UvY\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":false,\"message\":\"Resource not found\"}"
+            }
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Get event tickets",
+          "method": "GET",
+          "endpoint": "<<url>>/events/<<id>>/tickets",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [
+            {
+              "key": "id",
+              "value": "69ea5d085bf81d8b9c871150",
+              "active": true
+            }
+          ],
+          "responses": {
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "Get event tickets",
+                "method": "GET",
+                "endpoint": "<<url>>/events/<<id>>/tickets",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ea5d085bf81d8b9c871150",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "OK",
+              "code": 200,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "340"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:20:06 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"154-4USOFDYYzqsNvxdRrp+AcxQxVFY\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":[{\"_id\":\"69ebec921c8f6ed418cfaa5e\",\"event\":\"69ea5d085bf81d8b9c871150\",\"attendee\":{\"_id\":\"69e6aff05d885501e420b56a\",\"name\":\"Timur Ramazanov\",\"email\":\"timurram007@gmail.com\",\"phone\":\"0769170365\"},\"type\":\"General\",\"status\":\"active\",\"createdAt\":\"2026-04-24T22:20:02.306Z\",\"updatedAt\":\"2026-04-24T22:20:02.306Z\",\"__v\":0}]}"
+            }
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Edit event",
+          "method": "PATCH",
+          "endpoint": "<<url>>/events/<<id>>",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"title\": \"New title\"\n}\n"
+          },
+          "requestVariables": [
+            {
+              "key": "id",
+              "value": "69ea5be95bf81d8b9c87114e",
+              "active": true
+            }
+          ],
+          "responses": {
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "Delete event - Duplicate",
+                "method": "PUT",
+                "endpoint": "<<url>>/events/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": "application/json",
+                  "body": "{\n  \"title\": \"New title\"\n}\n"
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ea5be95bf81d8b9c87114e",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "OK",
+              "code": 200,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "374"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:27:50 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"176-Kj1B3OE+qN24vsZM9tqOunVjhWM\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{\"_id\":\"69ea5be95bf81d8b9c87114e\",\"title\":\"New title\",\"description\":\"Rammstein Stadium Tour is coming to Denmark. Book your tickets before it's too late!\",\"date\":\"2026-06-27T20:00:00.000Z\",\"location\":\"Valby Parken, Copenhagen\",\"capacity\":70000,\"status\":\"upcoming\",\"createdAt\":\"2026-04-23T17:50:33.031Z\",\"updatedAt\":\"2026-04-24T22:27:50.167Z\",\"__v\":0}}"
+            }
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Delete event",
+          "method": "DELETE",
+          "endpoint": "<<url>>/events/<<id>>",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [
+            {
+              "key": "id",
+              "value": "69ebedb81c8f6ed418cfaa5f",
+              "active": true
+            }
+          ],
+          "responses": {
+            "Not found": {
+              "name": "Not found",
+              "originalRequest": {
+                "v": "6",
+                "name": "Delete event",
+                "method": "DELETE",
+                "endpoint": "<<url>>/events/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebedb81c8f6ed418cfaa5f",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "Not Found",
+              "code": 404,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "45"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:26:13 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"2d-I5OVASiWcRYLm/5/6J/LSGRnqM0\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":false,\"message\":\"Event not found\"}"
+            },
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "Delete event",
+                "method": "DELETE",
+                "endpoint": "<<url>>/events/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebedb81c8f6ed418cfaa5f",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "OK",
+              "code": 200,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "26"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:25:41 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"1a-pIPrt4esgEyEkX/w62Rnrj9XXdg\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{}}"
+            }
+          },
+          "description": null
+        }
+      ],
+      "auth": {
+        "authActive": true,
+        "authType": "inherit"
+      },
+      "headers": [],
+      "variables": [],
+      "description": null
+    },
+    {
+      "v": 11,
+      "name": "attendees",
+      "folders": [],
+      "requests": [
+        {
+          "v": "17",
+          "name": "Create attendee",
+          "method": "POST",
+          "endpoint": "<<url>>/attendees",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"name\": \"Test Name\",\n  \"email\": \"test@mail.com\",\n  \"phone\": \"+123456789\"\n}\n"
+          },
+          "requestVariables": [],
+          "responses": {
+            "Wrong payload": {
+              "name": "Wrong payload",
+              "originalRequest": {
+                "v": "6",
+                "name": "Create attendee",
+                "method": "POST",
+                "endpoint": "<<url>>/attendees",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": "application/json",
+                  "body": "{\n  \"email\": \"test1@mail.com\",\n  \"phone\": \"+123456789\"\n}\n"
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": []
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "84"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:48:15 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"54-pj6l1Uvc7Gctu7ECQPAztmMgrN8\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":false,\"message\":\"Validation failed\",\"errors\":{\"name\":\"name is required\"}}"
+            },
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "Create attendee",
+                "method": "POST",
+                "endpoint": "<<url>>/attendees",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": "application/json",
+                  "body": "{\n  \"name\": \"Test Name\",\n  \"email\": \"test@mail.com\",\n  \"phone\": \"+123456789\"\n}\n"
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": []
+              },
+              "status": "Created",
+              "code": 201,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "208"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:47:59 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"d0-pxe967lnIPmDkSGYwYrHhzF4gl8\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{\"name\":\"Test Name\",\"email\":\"test@mail.com\",\"phone\":\"+123456789\",\"_id\":\"69ebf31fec0d3ea5fd7b553c\",\"createdAt\":\"2026-04-24T22:47:59.877Z\",\"updatedAt\":\"2026-04-24T22:47:59.877Z\",\"__v\":0}}"
+            },
+            "Duplicate": {
+              "name": "Duplicate",
+              "originalRequest": {
+                "v": "6",
+                "name": "Create attendee",
+                "method": "POST",
+                "endpoint": "<<url>>/attendees",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": "application/json",
+                  "body": "{\n  \"name\": \"Test Name\",\n  \"email\": \"test@mail.com\",\n  \"phone\": \"+123456789\"\n}\n"
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": []
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "50"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:48:33 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"32-eha7RcfVBIPtiR3YPLCqKyY8BlI\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":false,\"message\":\"email already exists\"}"
+            }
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "List attendees",
+          "method": "GET",
+          "endpoint": "<<url>>/attendees",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {
+            "List attendees": {
+              "name": "List attendees",
+              "originalRequest": {
+                "v": "6",
+                "name": "List attendees",
+                "method": "GET",
+                "endpoint": "<<url>>/attendees",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": []
+              },
+              "status": "OK",
+              "code": 200,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "420"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Thu, 23 Apr 2026 15:47:39 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"1a4-oiTarQ2IRJrClrUd7ikKqqkdwSc\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":[{\"_id\":\"69e6b7e85d885501e420b56d\",\"name\":\"Ekaterina Ramazanova\",\"email\":\"ljljl@aaf.com\",\"phone\":\"0769170365\",\"createdAt\":\"2026-04-20T23:34:00.066Z\",\"updatedAt\":\"2026-04-20T23:34:00.066Z\",\"__v\":0},{\"_id\":\"69e6aff05d885501e420b56a\",\"name\":\"Timur Ramazanov\",\"email\":\"timurram007@gmail.com\",\"phone\":\"0769170365\",\"createdAt\":\"2026-04-20T23:00:00.749Z\",\"updatedAt\":\"2026-04-20T23:33:47.604Z\",\"__v\":0}]}"
+            }
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Get attendee",
+          "method": "GET",
+          "endpoint": "<<url>>/attendees/<<id>>",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [
+            {
+              "key": "id",
+              "value": "69e6aff05d885501e420b56",
+              "active": true
+            }
+          ],
+          "responses": {
+            "Not found": {
+              "name": "Not found",
+              "originalRequest": {
+                "v": "6",
+                "name": "Get attendee",
+                "method": "GET",
+                "endpoint": "<<url>>/attendees/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69e6aff05d885501e420b56",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "Not Found",
+              "code": 404,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "48"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:22:23 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"30-rfXNN9D4GFyk6qfET7IqMTK5UvY\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":false,\"message\":\"Resource not found\"}"
+            },
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "Get attendee",
+                "method": "GET",
+                "endpoint": "<<url>>/attendees/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69e6aff05d885501e420b56a",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "OK",
+              "code": 200,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "222"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:22:13 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"de-K17d5p/SYHThKP6ECTT4E474V4E\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{\"_id\":\"69e6aff05d885501e420b56a\",\"name\":\"Timur Ramazanov\",\"email\":\"timurram007@gmail.com\",\"phone\":\"0769170365\",\"createdAt\":\"2026-04-20T23:00:00.749Z\",\"updatedAt\":\"2026-04-20T23:33:47.604Z\",\"__v\":0}}"
+            }
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Get attendee tickets",
+          "method": "GET",
+          "endpoint": "<<url>>/attendees/<<id>>/tickets",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [
+            {
+              "key": "id",
+              "value": "69e6aff05d885501e420b56a",
+              "active": true
+            }
+          ],
+          "responses": {
+            "Not found": {
+              "name": "Not found",
+              "originalRequest": {
+                "v": "6",
+                "name": "Get attendee tickets",
+                "method": "GET",
+                "endpoint": "<<url>>/attendees/<<id>>/tickets",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69e6aff05d885501e420b56",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "Not Found",
+              "code": 404,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "48"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:23:47 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"30-rfXNN9D4GFyk6qfET7IqMTK5UvY\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":false,\"message\":\"Resource not found\"}"
+            },
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "Get attendee tickets",
+                "method": "GET",
+                "endpoint": "<<url>>/attendees/<<id>>/tickets",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69e6aff05d885501e420b56a",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "OK",
+              "code": 200,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "595"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:23:27 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"253-CzeVyFkkaBTuMu79wlWYMWvVxs0\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":[{\"_id\":\"69e6b0985d885501e420b56c\",\"event\":null,\"attendee\":\"69e6aff05d885501e420b56a\",\"type\":\"General\",\"price\":1000,\"status\":\"cancelled\",\"createdAt\":\"2026-04-20T23:02:48.715Z\",\"updatedAt\":\"2026-04-20T23:03:00.948Z\",\"__v\":0},{\"_id\":\"69ebec921c8f6ed418cfaa5e\",\"event\":{\"_id\":\"69ea5d085bf81d8b9c871150\",\"title\":\"Sabaton\",\"date\":\"2025-12-17T20:00:00.000Z\",\"location\":\"Royal Arena, Copenhagen\",\"status\":\"completed\"},\"attendee\":\"69e6aff05d885501e420b56a\",\"type\":\"General\",\"status\":\"active\",\"createdAt\":\"2026-04-24T22:20:02.306Z\",\"updatedAt\":\"2026-04-24T22:20:02.306Z\",\"__v\":0}]}"
+            }
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Edit attendee",
+          "method": "PATCH",
+          "endpoint": "<<url>>/attendees/<<id>>",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"name\": \"New name\"\n}\n"
+          },
+          "requestVariables": [
+            {
+              "key": "id",
+              "value": "69ebf31fec0d3ea5fd7b553c",
+              "active": true
+            }
+          ],
+          "responses": {
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "Delete attendee",
+                "method": "PATCH",
+                "endpoint": "<<url>>/attendees/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": "application/json",
+                  "body": "{\n  \"name\": \"New name\"\n}\n"
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebf31fec0d3ea5fd7b553c",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "OK",
+              "code": 200,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "207"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 23:42:24 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"cf-UYWTpLap3HQ353/1xT72/63c5oA\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{\"_id\":\"69ebf31fec0d3ea5fd7b553c\",\"name\":\"New name\",\"email\":\"test@mail.com\",\"phone\":\"+123456789\",\"createdAt\":\"2026-04-24T22:47:59.877Z\",\"updatedAt\":\"2026-04-24T23:42:24.470Z\",\"__v\":0}}"
+            },
+            "Not found": {
+              "name": "Not found",
+              "originalRequest": {
+                "v": "6",
+                "name": "Delete attendee",
+                "method": "DELETE",
+                "endpoint": "<<url>>/attendees/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebff36ec0d3ea5fd7b5540",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "Not Found",
+              "code": 404,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "48"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 23:40:31 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"30-Xe/FE1nRJi7R7M5sTAuJpx9V6bg\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":false,\"message\":\"Attendee not found\"}"
+            }
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Delete attendee",
+          "method": "DELETE",
+          "endpoint": "<<url>>/attendees/<<id>>",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [
+            {
+              "key": "id",
+              "value": "69ebff36ec0d3ea5fd7b5540",
+              "active": true
+            }
+          ],
+          "responses": {
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "Delete attendee",
+                "method": "DELETE",
+                "endpoint": "<<url>>/attendees/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebff36ec0d3ea5fd7b5540",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "OK",
+              "code": 200,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "26"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 23:40:21 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"1a-pIPrt4esgEyEkX/w62Rnrj9XXdg\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{}}"
+            },
+            "Not found": {
+              "name": "Not found",
+              "originalRequest": {
+                "v": "6",
+                "name": "Delete attendee",
+                "method": "DELETE",
+                "endpoint": "<<url>>/attendees/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebff36ec0d3ea5fd7b5540",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "Not Found",
+              "code": 404,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "48"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 23:40:31 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"30-Xe/FE1nRJi7R7M5sTAuJpx9V6bg\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":false,\"message\":\"Attendee not found\"}"
+            }
+          },
+          "description": null
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "variables": [],
+      "description": null
+    },
+    {
+      "v": 11,
+      "name": "tickets",
+      "folders": [],
+      "requests": [
+        {
+          "v": "17",
+          "name": "Create ticket",
+          "method": "POST",
+          "endpoint": "<<url>>/tickets",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"event\": \"69ea5c4e5bf81d8b9c87114f\",\n  \"attendee\": \"69e6aff05d885501e420b56a\",\n  \"type\": \"wrong\"\n}\n"
+          },
+          "requestVariables": [
+            {
+              "key": "id",
+              "value": "69ebec921c8f6ed418cfaa50",
+              "active": true
+            }
+          ],
+          "responses": {
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "Edit ticket",
+                "method": "POST",
+                "endpoint": "<<url>>/tickets",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": "application/json",
+                  "body": "{\n  \"event\": \"69ea5c4e5bf81d8b9c87114f\",\n  \"attendee\": \"69e6aff05d885501e420b56a\",\n  \"type\": \"General\"\n}\n"
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebec921c8f6ed418cfaa50",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "Created",
+              "code": 201,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "252"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 23:54:38 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"fc-L2OUPx8riH6xTw141SYJBk0J7lA\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{\"event\":\"69ea5c4e5bf81d8b9c87114f\",\"attendee\":\"69e6aff05d885501e420b56a\",\"type\":\"General\",\"status\":\"active\",\"_id\":\"69ec02beec0d3ea5fd7b5544\",\"createdAt\":\"2026-04-24T23:54:38.169Z\",\"updatedAt\":\"2026-04-24T23:54:38.169Z\",\"__v\":0}}"
+            },
+            "No event": {
+              "name": "No event",
+              "originalRequest": {
+                "v": "6",
+                "name": "Create ticket",
+                "method": "POST",
+                "endpoint": "<<url>>/tickets",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": "application/json",
+                  "body": "{\n  \"attendee\": \"69e6aff05d885501e420b56a\",\n  \"type\": \"General\"\n}\n"
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebec921c8f6ed418cfaa50",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "Not Found",
+              "code": 404,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "45"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 23:55:27 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"2d-I5OVASiWcRYLm/5/6J/LSGRnqM0\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":false,\"message\":\"Event not found\"}"
+            },
+            "No attendee": {
+              "name": "No attendee",
+              "originalRequest": {
+                "v": "6",
+                "name": "Create ticket",
+                "method": "POST",
+                "endpoint": "<<url>>/tickets",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": "application/json",
+                  "body": "{\n  \"event\": \"69ea5c4e5bf81d8b9c87114f\",\n  \"type\": \"General\"\n}\n"
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebec921c8f6ed418cfaa50",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "Not Found",
+              "code": 404,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "48"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 23:55:51 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"30-Xe/FE1nRJi7R7M5sTAuJpx9V6bg\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":false,\"message\":\"Attendee not found\"}"
+            },
+            "Wrong payload": {
+              "name": "Wrong payload",
+              "originalRequest": {
+                "v": "6",
+                "name": "Create ticket",
+                "method": "POST",
+                "endpoint": "<<url>>/tickets",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": "application/json",
+                  "body": "{\n  \"event\": \"69ea5c4e5bf81d8b9c87114f\",\n  \"attendee\": \"69e6aff05d885501e420b56a\",\n  \"type\": \"wrong\"\n}\n"
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebec921c8f6ed418cfaa50",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "90"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 23:56:04 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"5a-CIaC5PoVec9Ut1eVP6NmkZw/PnM\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":false,\"message\":\"Validation failed\",\"errors\":{\"type\":\"Invalid value for type\"}}"
+            }
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "List tickets",
+          "method": "GET",
+          "endpoint": "<<url>>/tickets",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "List tickets",
+                "method": "GET",
+                "endpoint": "<<url>>/tickets",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": []
+              },
+              "status": "OK",
+              "code": 200,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "836"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 23:44:42 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"344-6LQKCCDHUJz+GtPKgFYTI3uNm48\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":[{\"_id\":\"69ebec921c8f6ed418cfaa5e\",\"event\":{\"_id\":\"69ea5d085bf81d8b9c871150\",\"title\":\"Sabaton\",\"date\":\"2025-12-17T20:00:00.000Z\",\"location\":\"Royal Arena, Copenhagen\",\"status\":\"completed\"},\"attendee\":{\"_id\":\"69e6aff05d885501e420b56a\",\"name\":\"Timur Ramazanov\",\"email\":\"timurram007@gmail.com\"},\"type\":\"General\",\"status\":\"active\",\"createdAt\":\"2026-04-24T22:20:02.306Z\",\"updatedAt\":\"2026-04-24T22:20:02.306Z\",\"__v\":0},{\"_id\":\"69ec005aec0d3ea5fd7b5541\",\"event\":{\"_id\":\"69ea5d085bf81d8b9c871150\",\"title\":\"Sabaton\",\"date\":\"2025-12-17T20:00:00.000Z\",\"location\":\"Royal Arena, Copenhagen\",\"status\":\"completed\"},\"attendee\":{\"_id\":\"69e6b7e85d885501e420b56d\",\"name\":\"Maria Romanova\",\"email\":\"ljljl@aaf.com\"},\"type\":\"VIP\",\"status\":\"active\",\"createdAt\":\"2026-04-24T23:44:26.358Z\",\"updatedAt\":\"2026-04-24T23:44:26.358Z\",\"__v\":0}]}"
+            }
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Get ticket",
+          "method": "GET",
+          "endpoint": "<<url>>/tickets/<<id>>",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [
+            {
+              "key": "id",
+              "value": "69ebec921c8f6ed418cfaa5",
+              "active": true
+            }
+          ],
+          "responses": {
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "Get ticket",
+                "method": "GET",
+                "endpoint": "<<url>>/tickets/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebec921c8f6ed418cfaa5e",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "OK",
+              "code": 200,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "456"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 23:46:06 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"1c8-R0+7+zDpAWc1MBsP6JyzHD6TAOo\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{\"_id\":\"69ebec921c8f6ed418cfaa5e\",\"event\":{\"_id\":\"69ea5d085bf81d8b9c871150\",\"title\":\"Sabaton\",\"date\":\"2025-12-17T20:00:00.000Z\",\"location\":\"Royal Arena, Copenhagen\",\"status\":\"completed\"},\"attendee\":{\"_id\":\"69e6aff05d885501e420b56a\",\"name\":\"Timur Ramazanov\",\"email\":\"timurram007@gmail.com\",\"phone\":\"0769170365\"},\"type\":\"General\",\"status\":\"active\",\"createdAt\":\"2026-04-24T22:20:02.306Z\",\"updatedAt\":\"2026-04-24T22:20:02.306Z\",\"__v\":0}}"
+            },
+            "Not found": {
+              "name": "Not found",
+              "originalRequest": {
+                "v": "6",
+                "name": "Get ticket",
+                "method": "GET",
+                "endpoint": "<<url>>/tickets/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebec921c8f6ed418cfaa5",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "Not Found",
+              "code": 404,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "48"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 23:46:14 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"30-rfXNN9D4GFyk6qfET7IqMTK5UvY\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":false,\"message\":\"Resource not found\"}"
+            }
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Edit ticket",
+          "method": "PATCH",
+          "endpoint": "<<url>>/tickets/<<id>>",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"status\": \"cancelled\"\n}\n"
+          },
+          "requestVariables": [
+            {
+              "key": "id",
+              "value": "69ebec921c8f6ed418cfaa50",
+              "active": true
+            }
+          ],
+          "responses": {
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "Delete ticket - Duplicate",
+                "method": "PATCH",
+                "endpoint": "<<url>>/tickets/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": "application/json",
+                  "body": "{\n  \"status\": \"cancelled\"\n}\n"
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebec921c8f6ed418cfaa5e",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "OK",
+              "code": 200,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "255"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 23:52:31 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"ff-dtsKEpXhPTU3MSIJSD58ktlLPi8\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{\"_id\":\"69ebec921c8f6ed418cfaa5e\",\"event\":\"69ea5d085bf81d8b9c871150\",\"attendee\":\"69e6aff05d885501e420b56a\",\"type\":\"General\",\"status\":\"cancelled\",\"createdAt\":\"2026-04-24T22:20:02.306Z\",\"updatedAt\":\"2026-04-24T23:52:31.299Z\",\"__v\":0}}"
+            },
+            "Not found": {
+              "name": "Not found",
+              "originalRequest": {
+                "v": "6",
+                "name": "Edit ticket",
+                "method": "PATCH",
+                "endpoint": "<<url>>/tickets/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": "application/json",
+                  "body": "{\n  \"status\": \"cancelled\"\n}\n"
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebec921c8f6ed418cfaa50",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "Not Found",
+              "code": 404,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "46"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 23:52:57 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"2e-0iDLjfCl0rw4WNVeEjhGalYpios\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":false,\"message\":\"Ticket not found\"}"
+            }
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Delete ticket",
+          "method": "DELETE",
+          "endpoint": "<<url>>/tickets/<<id>>",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [
+            {
+              "key": "id",
+              "value": "69ec00e4ec0d3ea5fd7b5542",
+              "active": true
+            }
+          ],
+          "responses": {
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "Get ticket",
+                "method": "GET",
+                "endpoint": "<<url>>/tickets/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebec921c8f6ed418cfaa5e",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "OK",
+              "code": 200,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "456"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 23:46:06 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"1c8-R0+7+zDpAWc1MBsP6JyzHD6TAOo\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{\"_id\":\"69ebec921c8f6ed418cfaa5e\",\"event\":{\"_id\":\"69ea5d085bf81d8b9c871150\",\"title\":\"Sabaton\",\"date\":\"2025-12-17T20:00:00.000Z\",\"location\":\"Royal Arena, Copenhagen\",\"status\":\"completed\"},\"attendee\":{\"_id\":\"69e6aff05d885501e420b56a\",\"name\":\"Timur Ramazanov\",\"email\":\"timurram007@gmail.com\",\"phone\":\"0769170365\"},\"type\":\"General\",\"status\":\"active\",\"createdAt\":\"2026-04-24T22:20:02.306Z\",\"updatedAt\":\"2026-04-24T22:20:02.306Z\",\"__v\":0}}"
+            },
+            "Not found": {
+              "name": "Not found",
+              "originalRequest": {
+                "v": "6",
+                "name": "Delete ticket",
+                "method": "DELETE",
+                "endpoint": "<<url>>/tickets/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ec00e4ec0d3ea5fd7b5542",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "Not Found",
+              "code": 404,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "46"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 23:48:15 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"2e-0iDLjfCl0rw4WNVeEjhGalYpios\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":false,\"message\":\"Ticket not found\"}"
+            }
+          },
+          "description": null
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "variables": [],
+      "description": null
+    }
+  ],
+  "requests": [],
+  "auth": {
+    "authType": "none",
+    "authActive": true
+  },
+  "headers": [],
+  "variables": [],
+  "description": ""
+}
