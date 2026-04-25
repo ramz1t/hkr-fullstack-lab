@@ -40,6 +40,12 @@ const updateEvent = async (req, res, next) => {
         if (!event) {
             return res.status(404).json({ success: false, message: 'Event not found' })
         }
+        if (req.body.status === 'cancelled') {
+            await Ticket.updateMany(
+                { event: req.params.id, status: 'active' },
+                { status: 'cancelled' }
+            )
+        }
         res.json({ success: true, data: event })
     } catch (err) {
         next(err)

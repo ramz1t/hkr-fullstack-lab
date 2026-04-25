@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useState, useEffect, useCallback, useRef } from 'react'
+import { useParams } from 'react-router-dom'
 import type { Event, Ticket, Attendee, TicketFormData } from '../../types'
 import { getEvent } from '../../services/events'
 import { getEventTickets } from '../../services/events'
@@ -9,6 +9,7 @@ import {
     updateTicket,
     deleteTicket,
 } from '../../services/tickets'
+import { useStore } from '../../store/StoreContext'
 import StatusBadge from '../../components/shared/StatusBadge'
 import Modal from '../../components/shared/Modal'
 import EmptyState from '../../components/shared/EmptyState'
@@ -18,12 +19,32 @@ import '../Page.css'
 
 export default function EventDetailPage() {
     const { id } = useParams<{ id: string }>()
+    const { events } = useStore()
     const [event, setEvent] = useState<Event | null>(null)
     const [tickets, setTickets] = useState<Ticket[]>([])
     const [attendees, setAttendees] = useState<Attendee[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
     const [modalOpen, setModalOpen] = useState(false)
+    const prevStatusRef = useRef<string | null>(null)
+
+    // syncs event from store when EventsPage updates it
+    useEffect(() => {
+        const storeEvent = events.data.find((e) => e._id === id)
+        if (!storeEvent) return
+        const prevStatus = prevStatusRef.current
+        prevStatusRef.current = storeEvent.status
+        setEvent(storeEvent)
+        if (
+            prevStatus &&
+            prevStatus !== 'cancelled' &&
+            storeEvent.status === 'cancelled'
+        ) {
+            getEventTickets(id!)
+                .then(setTickets)
+                .catch(() => {})
+        }
+    }, [events.data, id])
 
     const load = useCallback(() => {
         if (!id) return
