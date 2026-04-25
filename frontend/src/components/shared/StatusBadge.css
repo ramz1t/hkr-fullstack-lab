@@ -1,12 +1,25 @@
 .badge {
+    --color: var(--accent);
     display: inline-block;
     padding: 2px 8px;
     border-radius: 4px;
     font-size: 12px;
     font-weight: 500;
     text-transform: capitalize;
-    border: 1px solid var(--accent-border);
-    background: var(--accent-bg);
-    color: var(--accent);
+    border: 1px solid var(--color);
+    background: color-mix(in srgb, var(--color) 12%, transparent);
+    color: var(--color);
     width: fit-content;
+}
+
+.badge-cancelled {
+    --color: #e53e3e;
+}
+
+.badge-completed {
+    --color: #38a169;
+}
+
+.badge-vip {
+    --color: #d97706;
 }
