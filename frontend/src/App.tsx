@@ -1,30 +1,36 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { StoreProvider } from './store/StoreContext'
 import Layout from './components/layout/Layout'
 import NotFound from './components/layout/NotFound'
-import EventsPage from './pages/EventsPage'
-import EventDetailPage from './pages/EventDetailPage'
-import TicketsPage from './pages/TicketsPage'
-import AttendeesPage from './pages/AttendeesPage'
-import AttendeeDetailPage from './pages/AttendeeDetailPage'
+import EventsPage from './pages/events/EventsPage'
+import EventDetailPage from './pages/events/EventDetailPage'
+import TicketsPage from './pages/tickets/TicketsPage'
+import AttendeesPage from './pages/attendees/AttendeesPage'
+import AttendeeDetailPage from './pages/attendees/AttendeeDetailPage'
 
 function App() {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route element={<Layout />}>
-                    <Route index element={'homepage'} />
-                    <Route path="events" element={<EventsPage />} />
-                    <Route path="events/:id" element={<EventDetailPage />} />
-                    <Route path="tickets" element={<TicketsPage />} />
-                    <Route path="attendees" element={<AttendeesPage />} />
-                    <Route
-                        path="attendees/:id"
-                        element={<AttendeeDetailPage />}
-                    />
-                    <Route path="*" element={<NotFound />} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
+        <StoreProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route element={<Layout />}>
+                        <Route index element={'homepage'} />
+                        <Route path="events" element={<EventsPage />} />
+                        <Route
+                            path="events/:id"
+                            element={<EventDetailPage />}
+                        />
+                        <Route path="tickets" element={<TicketsPage />} />
+                        <Route path="attendees" element={<AttendeesPage />} />
+                        <Route
+                            path="attendees/:id"
+                            element={<AttendeeDetailPage />}
+                        />
+                        <Route path="*" element={<NotFound />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </StoreProvider>
     )
 }
 

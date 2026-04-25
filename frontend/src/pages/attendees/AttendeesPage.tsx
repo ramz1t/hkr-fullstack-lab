@@ -1,45 +1,40 @@
-import { useState, useEffect, useCallback } from 'react'
-import type { Attendee, AttendeeFormData } from '../types'
+import { useState, useEffect } from 'react'
+import type { Attendee, AttendeeFormData } from '../../types'
 import {
     getAttendees,
     createAttendee,
     updateAttendee,
     deleteAttendee,
-} from '../services/attendees'
-import AttendeeRow from '../components/attendees/AttendeeRow'
-import AttendeeForm from '../components/attendees/AttendeeForm'
-import Modal from '../components/shared/Modal'
-import EmptyState from '../components/shared/EmptyState'
-import './Page.css'
+} from '../../services/attendees'
+import { useStore } from '../../store/StoreContext'
+import AttendeeRow from '../../components/attendees/AttendeeRow'
+import AttendeeForm from '../../components/attendees/AttendeeForm'
+import Modal from '../../components/shared/Modal'
+import EmptyState from '../../components/shared/EmptyState'
+import '../Page.css'
 
 export default function AttendeesPage() {
-    const [attendees, setAttendees] = useState<Attendee[]>([])
-    const [loading, setLoading] = useState(true)
+    const { attendees } = useStore()
     const [error, setError] = useState('')
     const [modalOpen, setModalOpen] = useState(false)
     const [editing, setEditing] = useState<Attendee | null>(null)
 
-    const load = useCallback(() => {
-        setLoading(true)
-        getAttendees()
-            .then(setAttendees)
-            .catch((err: Error) => setError(err.message))
-            .finally(() => setLoading(false))
-    }, [])
-
     useEffect(() => {
-        load()
-    }, [load])
+        getAttendees()
+            .then(attendees.set)
+            .catch((err: Error) => setError(err.message))
+            .finally(() => attendees.setLoading(false))
+    }, [])
 
     const handleSubmit = async (data: AttendeeFormData) => {
         if (editing) {
             const updated = await updateAttendee(editing._id, data)
-            setAttendees((prev) =>
-                prev.map((a) => (a._id === updated._id ? updated : a))
+            attendees.set(
+                attendees.data.map((a) => (a._id === updated._id ? updated : a))
             )
         } else {
             const created = await createAttendee(data)
-            setAttendees((prev) => [...prev, created])
+            attendees.set([...attendees.data, created])
         }
         setModalOpen(false)
         setEditing(null)
@@ -48,7 +43,7 @@ export default function AttendeesPage() {
     const handleDelete = async (id: string) => {
         if (!confirm('Delete this attendee?')) return
         await deleteAttendee(id)
-        setAttendees((prev) => prev.filter((a) => a._id !== id))
+        attendees.set(attendees.data.filter((a) => a._id !== id))
     }
 
     const openCreate = () => {
@@ -73,14 +68,14 @@ export default function AttendeesPage() {
                 </button>
             </div>
 
-            {loading && <p className="page-loading">Loading…</p>}
+            {attendees.isLoading && <p className="page-loading">Loading…</p>}
             {error && <p className="page-error">{error}</p>}
 
-            {!loading && !error && attendees.length === 0 && (
+            {!attendees.isLoading && !error && attendees.data.length === 0 && (
                 <EmptyState message="No attendees yet. Add the first one!" />
             )}
 
-            {attendees.length > 0 && (
+            {attendees.data.length > 0 && (
                 <table className="table">
                     <thead>
                         <tr>
@@ -91,7 +86,7 @@ export default function AttendeesPage() {
                         </tr>
                     </thead>
                     <tbody>
-                        {attendees.map((attendee) => (
+                        {attendees.data.map((attendee) => (
                             <AttendeeRow
                                 key={attendee._id}
                                 attendee={attendee}

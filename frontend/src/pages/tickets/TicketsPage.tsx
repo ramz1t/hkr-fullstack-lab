@@ -1,33 +1,28 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import type { Ticket, Attendee, Event } from '../types'
-import { getTickets, updateTicket } from '../services/tickets'
-import StatusBadge from '../components/shared/StatusBadge'
-import EmptyState from '../components/shared/EmptyState'
-import './Page.css'
+import type { Attendee, Event } from '../../types'
+import { getTickets, updateTicket } from '../../services/tickets'
+import { useStore } from '../../store/StoreContext'
+import StatusBadge from '../../components/shared/StatusBadge'
+import EmptyState from '../../components/shared/EmptyState'
+import '../Page.css'
 
 export default function TicketsPage() {
-    const [tickets, setTickets] = useState<Ticket[]>([])
-    const [loading, setLoading] = useState(true)
+    const { tickets } = useStore()
     const [error, setError] = useState('')
 
-    const load = useCallback(() => {
-        setLoading(true)
-        getTickets()
-            .then(setTickets)
-            .catch((err: Error) => setError(err.message))
-            .finally(() => setLoading(false))
-    }, [])
-
     useEffect(() => {
-        load()
-    }, [load])
+        getTickets()
+            .then(tickets.set)
+            .catch((err: Error) => setError(err.message))
+            .finally(() => tickets.setLoading(false))
+    }, [])
 
     const handleCancel = async (id: string) => {
         if (!confirm('Cancel this ticket?')) return
         const updated = await updateTicket(id, { status: 'cancelled' })
-        setTickets((prev) =>
-            prev.map((t) => (t._id === updated._id ? updated : t))
+        tickets.set(
+            tickets.data.map((t) => (t._id === updated._id ? updated : t))
         )
     }
 
@@ -37,14 +32,14 @@ export default function TicketsPage() {
                 <h1 className="page-title">All Tickets</h1>
             </div>
 
-            {loading && <p className="page-loading">Loading…</p>}
+            {tickets.isLoading && <p className="page-loading">Loading…</p>}
             {error && <p className="page-error">{error}</p>}
 
-            {!loading && !error && tickets.length === 0 && (
+            {!tickets.isLoading && !error && tickets.data.length === 0 && (
                 <EmptyState message="No tickets yet. Register attendees from an event page." />
             )}
 
-            {tickets.length > 0 && (
+            {tickets.data.length > 0 && (
                 <table className="table">
                     <thead>
                         <tr>
@@ -57,7 +52,7 @@ export default function TicketsPage() {
                         </tr>
                     </thead>
                     <tbody>
-                        {tickets.map((ticket) => {
+                        {tickets.data.map((ticket) => {
                             const attendee = ticket.attendee as Attendee
                             const event = ticket.event as Event
                             return (

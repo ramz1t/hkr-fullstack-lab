@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import type { Attendee, Ticket, Event } from '../types'
-import { getAttendee, getAttendeeTickets } from '../services/attendees'
-import StatusBadge from '../components/shared/StatusBadge'
-import EmptyState from '../components/shared/EmptyState'
-import './Page.css'
+import type { Attendee, Ticket, Event } from '../../types'
+import { getAttendee, getAttendeeTickets } from '../../services/attendees'
+import StatusBadge from '../../components/shared/StatusBadge'
+import EmptyState from '../../components/shared/EmptyState'
+import '../Page.css'
 
 export default function AttendeeDetailPage() {
     const { id } = useParams<{ id: string }>()
