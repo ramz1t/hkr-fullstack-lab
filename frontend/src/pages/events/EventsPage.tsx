@@ -72,15 +72,18 @@ export default function EventsPage() {
                 </button>
             </div>
 
-            {events.isLoading && <p className="page-loading">Loading…</p>}
-            {error && <p className="page-error">{error}</p>}
-
-            {!events.isLoading && !error && events.data.length === 0 && (
-                <EmptyState message="No events yet. Create your first one!" />
-            )}
-
             <div className={`split-layout${selectedId ? ' has-detail' : ''}`}>
                 <div className="split-list">
+                    {events.isLoading && (
+                        <p className="page-loading">Loading…</p>
+                    )}
+                    {error && <p className="page-error">{error}</p>}
+
+                    {!events.isLoading &&
+                        !error &&
+                        events.data.length === 0 && (
+                            <EmptyState message="No events yet. Create your first one!" />
+                        )}
                     <div className="card-grid">
                         {events.data.map((event) => (
                             <EventCard

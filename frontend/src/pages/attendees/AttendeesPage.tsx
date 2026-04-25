@@ -74,15 +74,18 @@ export default function AttendeesPage() {
                 </button>
             </div>
 
-            {attendees.isLoading && <p className="page-loading">Loading…</p>}
-            {error && <p className="page-error">{error}</p>}
-
-            {!attendees.isLoading && !error && attendees.data.length === 0 && (
-                <EmptyState message="No attendees yet. Add the first one!" />
-            )}
-
             <div className={`split-layout${selectedId ? ' has-detail' : ''}`}>
                 <div className="split-list">
+                    {attendees.isLoading && (
+                        <p className="page-loading">Loading…</p>
+                    )}
+                    {error && <p className="page-error">{error}</p>}
+
+                    {!attendees.isLoading &&
+                        !error &&
+                        attendees.data.length === 0 && (
+                            <EmptyState message="No attendees yet. Add the first one!" />
+                        )}
                     {attendees.data.length > 0 && (
                         <div className="table-wrap">
                             <table className="table">
