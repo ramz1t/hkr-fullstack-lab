@@ -14,6 +14,15 @@ export interface Collection<T> {
     setLoading: (v: boolean) => void
 }
 
+function useCollection<T>(): Collection<T> {
+    const [data, setData] = useState<T[]>([])
+    const [isLoading, setLoading] = useState(true)
+    return useMemo(
+        () => ({ data, set: setData, isLoading, setLoading }),
+        [data, isLoading]
+    )
+}
+
 interface Store {
     events: Collection<Event>
     attendees: Collection<Attendee>
@@ -23,41 +32,9 @@ interface Store {
 const StoreContext = createContext<Store | null>(null)
 
 export function StoreProvider({ children }: { children: ReactNode }) {
-    const [eventsData, setEventsData] = useState<Event[]>([])
-    const [eventsLoading, setEventsLoading] = useState(true)
-    const events = useMemo<Collection<Event>>(
-        () => ({
-            data: eventsData,
-            set: setEventsData,
-            isLoading: eventsLoading,
-            setLoading: setEventsLoading,
-        }),
-        [eventsData, eventsLoading]
-    )
-
-    const [attendeesData, setAttendeesData] = useState<Attendee[]>([])
-    const [attendeesLoading, setAttendeesLoading] = useState(true)
-    const attendees = useMemo<Collection<Attendee>>(
-        () => ({
-            data: attendeesData,
-            set: setAttendeesData,
-            isLoading: attendeesLoading,
-            setLoading: setAttendeesLoading,
-        }),
-        [attendeesData, attendeesLoading]
-    )
-
-    const [ticketsData, setTicketsData] = useState<Ticket[]>([])
-    const [ticketsLoading, setTicketsLoading] = useState(true)
-    const tickets = useMemo<Collection<Ticket>>(
-        () => ({
-            data: ticketsData,
-            set: setTicketsData,
-            isLoading: ticketsLoading,
-            setLoading: setTicketsLoading,
-        }),
-        [ticketsData, ticketsLoading]
-    )
+    const events = useCollection<Event>()
+    const attendees = useCollection<Attendee>()
+    const tickets = useCollection<Ticket>()
 
     const store = useMemo(
         () => ({ events, attendees, tickets }),
