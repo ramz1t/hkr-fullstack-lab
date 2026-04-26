@@ -1,3 +1,4 @@
+const e = require('express')
 const { Ticket, Event, Attendee } = require('../models')
 
 const getAllTickets = async (req, res, next) => {
@@ -29,16 +30,21 @@ const createTicket = async (req, res, next) => {
     try {
         const { event, attendee } = req.body
 
-        const [eventExists, attendeeExists] = await Promise.all([
+        const [eventExists, attendeeExists, existingTicketsCount] = await Promise.all([
             Event.findById(event),
             Attendee.findById(attendee),
+            Ticket.find({ event, status: "active" }).countDocuments()
         ])
+        console.log(eventExists, existingTicketsCount)
 
         if (!eventExists) {
             return res.status(404).json({ success: false, message: 'Event not found' })
         }
         if (!attendeeExists) {
             return res.status(404).json({ success: false, message: 'Attendee not found' })
+        }
+        if (existingTicketsCount + 1 > eventExists.capacity) {
+            return res.status(400).json({ success: false, message: 'Event has no more siting capacity' })
         }
 
         const ticket = await Ticket.create(req.body)
