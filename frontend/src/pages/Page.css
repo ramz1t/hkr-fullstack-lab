@@ -67,6 +67,18 @@
     padding: var(--gap-1);
 }
 
+.list-content {
+    position: relative;
+}
+
+.list-overlay {
+    position: absolute;
+    inset: 0;
+    background: color-mix(in srgb, var(--bg) 65%, transparent);
+    pointer-events: none;
+    z-index: 1;
+}
+
 .back-link {
     font-size: 14px;
     color: var(--text);

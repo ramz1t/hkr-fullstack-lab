@@ -97,21 +97,29 @@ export default function EventsPage() {
 
             <div className={`split-layout${selectedId ? ' has-detail' : ''}`}>
                 <div className="split-list">
-                    {events.isLoading ? (
+                    {events.isLoading && events.data.length === 0 ? (
                         <p className="page-loading">Loading…</p>
-                    ) : error ? (
+                    ) : error && events.data.length === 0 ? (
                         <p className="page-error">{error}</p>
                     ) : events.data.length === 0 ? (
                         <EmptyState message="No events yet. Create your first one!" />
                     ) : (
-                        <div className="card-grid">
-                            {events.data.map((event) => (
-                                <EventCard
-                                    key={event._id}
-                                    event={event}
-                                    isSelected={event._id === selectedId}
+                        <div className="list-content">
+                            <div className="card-grid">
+                                {events.data.map((event) => (
+                                    <EventCard
+                                        key={event._id}
+                                        event={event}
+                                        isSelected={event._id === selectedId}
+                                    />
+                                ))}
+                            </div>
+                            {events.isLoading && (
+                                <div
+                                    className="list-overlay"
+                                    aria-hidden="true"
                                 />
-                            ))}
+                            )}
                         </div>
                     )}
                 </div>
