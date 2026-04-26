@@ -253,6 +253,8 @@ label:has(+ input:required, + select:required, + textarea:required)::after {
 }
 
 input,
-select {
+select,
+textarea {
     width: 100%;
+    box-sizing: border-box;
 }
