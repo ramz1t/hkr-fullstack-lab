@@ -103,7 +103,8 @@ bulk update.
     "capacity": 200,
     "status": "upcoming",
     "createdAt": "2025-04-25T10:00:00.000Z",
-    "updatedAt": "2025-04-25T10:00:00.000Z"
+    "updatedAt": "2025-04-25T10:00:00.000Z",
+    "scoped_to": "644c3h..."
   }
 }
 \end{lstlisting}
@@ -135,7 +136,8 @@ and \texttt{attendee} must be valid ObjectIds referencing existing documents
     "type": "standard",
     "status": "active",
     "createdAt": "2025-04-25T10:05:00.000Z",
-    "updatedAt": "2025-04-25T10:05:00.000Z"
+    "updatedAt": "2025-04-25T10:05:00.000Z",
+    "scoped_to": "644c3h..."
   }
 }
 \end{lstlisting}
@@ -154,5 +156,20 @@ MongoDB Atlas cluster had IP access restricted to a specific address, and the
 Vercel deployment IP was not whitelisted. The API kept timing out with no
 clear error until the network access list in the Atlas dashboard was updated
 to allow connections from all IPs.
+
+% -----------------------------------------------------------------------
+\section{Changes}
+
+One of the features that has changed multiple times over the course of 
+developing the lab is the \texttt{apiFetch()} utility for REST services on 
+frontend. The initial versions was a slim wrapper around \texttt{fetch()} 
+that accepted path and params and called the network. In version 2, query 
+parameter concatenation was added because I needed it for event searching 
+and filtering (\href{https://github.com/ramz1t/hkr-fullstack-lab/commit/14deea1964b07d65fcfe9b46de8608b03753afe5}{14deea1}). 
+Later, when I decided to deploy the project, it became clear that 
+authentication with user scope needed to be implemented to avoid data 
+inconsistencies. For that I used JWT authentication, so the \texttt{Authorization} 
+header had to be introduced in the utility 
+(\href{https://github.com/ramz1t/hkr-fullstack-lab/commit/5dc0a605117a689ca0ac7a00e3c0045e82617651}{5dc0a60}).
 
 \end{document}
