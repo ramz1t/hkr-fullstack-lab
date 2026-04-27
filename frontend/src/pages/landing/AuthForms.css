@@ -1,0 +1,48 @@
+.auth-box {
+    max-width: 400px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.auth-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    transition:
+        background 0.15s,
+        color 0.15s;
+}
+
+.auth-tab:hover {
+    color: var(--text-h);
+}
+
+.auth-tab.active {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+    margin-bottom: -1px;
+}
+
+.auth-form {
+    padding: var(--gap-1);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-1);
+}
+
+.auth-form .btn-primary {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

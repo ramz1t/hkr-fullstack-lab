@@ -1,7 +1,18 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { useAuth } from '../../store/AuthContext'
 import './Navbar.css'
 
 export default function Navbar() {
+    const { user, signOut } = useAuth()
+    const navigate = useNavigate()
+
+    const handleUserClick = () => {
+        if (window.confirm('Do you want to logout?')) {
+            signOut()
+            navigate('/')
+        }
+    }
+
     return (
         <nav className="navbar">
             <Link to="/" className="navbar-brand">
@@ -33,6 +44,15 @@ export default function Navbar() {
                     </NavLink>
                 </li>
             </ul>
+            {user && (
+                <button
+                    className="navbar-user"
+                    onClick={handleUserClick}
+                    type="button"
+                >
+                    {user.email}
+                </button>
+            )}
         </nav>
     )
 }

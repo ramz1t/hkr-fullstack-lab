@@ -1,3 +1,5 @@
+import AuthForm from './AuthForms'
+import { useAuth } from '../../store/AuthContext'
 import './LandingPage.css'
 
 const stack = [
@@ -48,6 +50,8 @@ const solutions = [
 ]
 
 export default function LandingPage() {
+    const { user } = useAuth()
+    if (!user) return <AuthForm />
     return (
         <div className="landing">
             <section className="landing-hero">
