@@ -28,6 +28,11 @@ const eventSchema = new mongoose.Schema(
             enum: ['upcoming', 'ongoing', 'completed', 'cancelled'],
             default: 'upcoming',
         },
+        scoped_to: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+            required: [true, 'User scope is required'],
+        },
     },
     { timestamps: true }
 )

@@ -22,6 +22,11 @@ const ticketSchema = new mongoose.Schema(
             enum: ['active', 'cancelled'],
             default: 'active',
         },
+        scoped_to: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+            required: [true, 'User scope is required'],
+        },
     },
     { timestamps: true }
 )
