@@ -1,6 +1,6 @@
 {
   "v": 11,
-  "name": "fullstack-lab",
+  "name": "hkr-fullstack-lab",
   "folders": [
     {
       "v": 11,
@@ -250,7 +250,7 @@
           "testScript": "",
           "auth": {
             "authType": "inherit",
-            "authActive": true
+            "authActive": false
           },
           "body": {
             "contentType": null,
@@ -362,42 +362,14 @@
                 }
               ],
               "body": "{\"success\":true,\"data\":[{\"_id\":\"69e6b0195d885501e420b56b\",\"title\":\"Jazz\",\"description\":\"CPH\",\"date\":\"2026-04-20T17:00:00.000Z\",\"location\":\"Copenhagen\",\"capacity\":150,\"status\":\"upcoming\",\"createdAt\":\"2026-04-20T23:00:41.493Z\",\"updatedAt\":\"2026-04-21T00:12:44.864Z\",\"__v\":0}]}"
-            }
-          },
-          "description": null
-        },
-        {
-          "v": "17",
-          "name": "Get event",
-          "method": "GET",
-          "endpoint": "<<url>>/events/<<id>>",
-          "params": [],
-          "headers": [],
-          "preRequestScript": "",
-          "testScript": "",
-          "auth": {
-            "authType": "inherit",
-            "authActive": true
-          },
-          "body": {
-            "contentType": null,
-            "body": null
-          },
-          "requestVariables": [
-            {
-              "key": "id",
-              "value": "69ea5d085bf81d8b9c871150",
-              "active": true
-            }
-          ],
-          "responses": {
-            "Success": {
-              "name": "Success",
+            },
+            "Not authenticated": {
+              "name": "Not authenticated",
               "originalRequest": {
                 "v": "6",
-                "name": "Get event",
+                "name": "List events",
                 "method": "GET",
-                "endpoint": "<<url>>/events/<<id>>",
+                "endpoint": "<<url>>/events",
                 "headers": [],
                 "params": [],
                 "body": {
@@ -405,27 +377,25 @@
                   "body": null
                 },
                 "auth": {
-                  "authType": "none",
-                  "authActive": true
+                  "authType": "inherit",
+                  "authActive": false
                 },
-                "requestVariables": [
-                  {
-                    "key": "id",
-                    "value": "69ea5d085bf81d8b9c871150",
-                    "active": true
-                  }
-                ]
+                "requestVariables": []
               },
-              "status": "OK",
-              "code": 200,
+              "status": "Unauthorized",
+              "code": 401,
               "headers": [
                 {
                   "key": "access-control-allow-origin",
                   "value": "http://localhost:5173"
                 },
                 {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
                   "key": "content-length",
-                  "value": "344"
+                  "value": "47"
                 },
                 {
                   "key": "content-security-policy",
@@ -445,11 +415,15 @@
                 },
                 {
                   "key": "date",
-                  "value": "Fri, 24 Apr 2026 22:17:10 GMT"
+                  "value": "Mon, 27 Apr 2026 10:54:30 GMT"
                 },
                 {
                   "key": "etag",
-                  "value": "W/\"158-I5DrXkX1HIqLmGlVkeCL7U4DxAQ\""
+                  "value": "W/\"2f-HPbY8Ml+54UQ+Txy1ETK5x3QFVM\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
                 },
                 {
                   "key": "origin-agent-cluster",
@@ -492,8 +466,36 @@
                   "value": "0"
                 }
               ],
-              "body": "{\"success\":true,\"data\":{\"_id\":\"69ea5d085bf81d8b9c871150\",\"title\":\"Sabaton\",\"description\":\"History, fire, show and much more! Book your tickets now\",\"date\":\"2025-12-17T20:00:00.000Z\",\"location\":\"Royal Arena, Copenhagen\",\"capacity\":35000,\"status\":\"completed\",\"createdAt\":\"2026-04-23T17:55:20.710Z\",\"updatedAt\":\"2026-04-23T17:55:39.365Z\",\"__v\":0}}"
-            },
+              "body": "{\"success\":false,\"message\":\"Not authenticated\"}"
+            }
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Get event",
+          "method": "GET",
+          "endpoint": "<<url>>/events/<<id>>",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [
+            {
+              "key": "id",
+              "value": "69ea5d085bf81d8b9c871150",
+              "active": true
+            }
+          ],
+          "responses": {
             "Not found": {
               "name": "Not found",
               "originalRequest": {
@@ -604,6 +606,109 @@
                 }
               ],
               "body": "{\"success\":false,\"message\":\"Resource not found\"}"
+            },
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "Get event",
+                "method": "GET",
+                "endpoint": "<<url>>/events/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ea5d085bf81d8b9c871150",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "OK",
+              "code": 200,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "content-length",
+                  "value": "344"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:17:10 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"158-I5DrXkX1HIqLmGlVkeCL7U4DxAQ\""
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{\"_id\":\"69ea5d085bf81d8b9c871150\",\"title\":\"Sabaton\",\"description\":\"History, fire, show and much more! Book your tickets now\",\"date\":\"2025-12-17T20:00:00.000Z\",\"location\":\"Royal Arena, Copenhagen\",\"capacity\":35000,\"status\":\"completed\",\"createdAt\":\"2026-04-23T17:55:20.710Z\",\"updatedAt\":\"2026-04-23T17:55:39.365Z\",\"__v\":0}}"
             }
           },
           "description": null
@@ -896,7 +1001,8 @@
           "preRequestScript": "",
           "testScript": "",
           "auth": {
-            "authType": "inherit",
+            "authType": "bearer",
+            "token": "<<token>>",
             "authActive": true
           },
           "body": {
@@ -906,11 +1012,122 @@
           "requestVariables": [
             {
               "key": "id",
-              "value": "69ebedb81c8f6ed418cfaa5f",
+              "value": "69ef40298c9cbe43a50d3bef",
               "active": true
             }
           ],
           "responses": {
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "Delete event",
+                "method": "DELETE",
+                "endpoint": "<<url>>/events/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebedb81c8f6ed418cfaa5f",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "OK",
+              "code": 200,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "26"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:25:41 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"1a-pIPrt4esgEyEkX/w62Rnrj9XXdg\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{}}"
+            },
             "Not found": {
               "name": "Not found",
               "originalRequest": {
@@ -1022,8 +1239,8 @@
               ],
               "body": "{\"success\":false,\"message\":\"Event not found\"}"
             },
-            "Success": {
-              "name": "Success",
+            "Wrong user scope": {
+              "name": "Wrong user scope",
               "originalRequest": {
                 "v": "6",
                 "name": "Delete event",
@@ -1036,19 +1253,20 @@
                   "body": null
                 },
                 "auth": {
-                  "authType": "none",
+                  "authType": "bearer",
+                  "token": "<<token>>",
                   "authActive": true
                 },
                 "requestVariables": [
                   {
                     "key": "id",
-                    "value": "69ebedb81c8f6ed418cfaa5f",
+                    "value": "69ef40298c9cbe43a50d3bef",
                     "active": true
                   }
                 ]
               },
-              "status": "OK",
-              "code": 200,
+              "status": "Forbidden",
+              "code": 403,
               "headers": [
                 {
                   "key": "access-control-allow-origin",
@@ -1060,7 +1278,7 @@
                 },
                 {
                   "key": "content-length",
-                  "value": "26"
+                  "value": "39"
                 },
                 {
                   "key": "content-security-policy",
@@ -1080,11 +1298,11 @@
                 },
                 {
                   "key": "date",
-                  "value": "Fri, 24 Apr 2026 22:25:41 GMT"
+                  "value": "Mon, 27 Apr 2026 10:54:03 GMT"
                 },
                 {
                   "key": "etag",
-                  "value": "W/\"1a-pIPrt4esgEyEkX/w62Rnrj9XXdg\""
+                  "value": "W/\"27-cfwNqkx6Ig1gmHkzdOu2EdOViZ8\""
                 },
                 {
                   "key": "keep-alive",
@@ -1131,7 +1349,7 @@
                   "value": "0"
                 }
               ],
-              "body": "{\"success\":true,\"data\":{}}"
+              "body": "{\"success\":false,\"message\":\"Forbidden\"}"
             }
           },
           "description": null
@@ -1169,111 +1387,6 @@
           },
           "requestVariables": [],
           "responses": {
-            "Wrong payload": {
-              "name": "Wrong payload",
-              "originalRequest": {
-                "v": "6",
-                "name": "Create attendee",
-                "method": "POST",
-                "endpoint": "<<url>>/attendees",
-                "headers": [],
-                "params": [],
-                "body": {
-                  "contentType": "application/json",
-                  "body": "{\n  \"email\": \"test1@mail.com\",\n  \"phone\": \"+123456789\"\n}\n"
-                },
-                "auth": {
-                  "authType": "none",
-                  "authActive": true
-                },
-                "requestVariables": []
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "headers": [
-                {
-                  "key": "access-control-allow-origin",
-                  "value": "http://localhost:5173"
-                },
-                {
-                  "key": "connection",
-                  "value": "keep-alive"
-                },
-                {
-                  "key": "content-length",
-                  "value": "84"
-                },
-                {
-                  "key": "content-security-policy",
-                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-                },
-                {
-                  "key": "content-type",
-                  "value": "application/json; charset=utf-8"
-                },
-                {
-                  "key": "cross-origin-opener-policy",
-                  "value": "same-origin"
-                },
-                {
-                  "key": "cross-origin-resource-policy",
-                  "value": "same-origin"
-                },
-                {
-                  "key": "date",
-                  "value": "Fri, 24 Apr 2026 22:48:15 GMT"
-                },
-                {
-                  "key": "etag",
-                  "value": "W/\"54-pj6l1Uvc7Gctu7ECQPAztmMgrN8\""
-                },
-                {
-                  "key": "keep-alive",
-                  "value": "timeout=5"
-                },
-                {
-                  "key": "origin-agent-cluster",
-                  "value": "?1"
-                },
-                {
-                  "key": "referrer-policy",
-                  "value": "no-referrer"
-                },
-                {
-                  "key": "strict-transport-security",
-                  "value": "max-age=31536000; includeSubDomains"
-                },
-                {
-                  "key": "vary",
-                  "value": "Origin"
-                },
-                {
-                  "key": "x-content-type-options",
-                  "value": "nosniff"
-                },
-                {
-                  "key": "x-dns-prefetch-control",
-                  "value": "off"
-                },
-                {
-                  "key": "x-download-options",
-                  "value": "noopen"
-                },
-                {
-                  "key": "x-frame-options",
-                  "value": "SAMEORIGIN"
-                },
-                {
-                  "key": "x-permitted-cross-domain-policies",
-                  "value": "none"
-                },
-                {
-                  "key": "x-xss-protection",
-                  "value": "0"
-                }
-              ],
-              "body": "{\"success\":false,\"message\":\"Validation failed\",\"errors\":{\"name\":\"name is required\"}}"
-            },
             "Success": {
               "name": "Success",
               "originalRequest": {
@@ -1483,6 +1596,111 @@
                 }
               ],
               "body": "{\"success\":false,\"message\":\"email already exists\"}"
+            },
+            "Wrong payload": {
+              "name": "Wrong payload",
+              "originalRequest": {
+                "v": "6",
+                "name": "Create attendee",
+                "method": "POST",
+                "endpoint": "<<url>>/attendees",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": "application/json",
+                  "body": "{\n  \"email\": \"test1@mail.com\",\n  \"phone\": \"+123456789\"\n}\n"
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": []
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "84"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:48:15 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"54-pj6l1Uvc7Gctu7ECQPAztmMgrN8\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":false,\"message\":\"Validation failed\",\"errors\":{\"name\":\"name is required\"}}"
             }
           },
           "description": null
@@ -1889,117 +2107,6 @@
             }
           ],
           "responses": {
-            "Not found": {
-              "name": "Not found",
-              "originalRequest": {
-                "v": "6",
-                "name": "Get attendee tickets",
-                "method": "GET",
-                "endpoint": "<<url>>/attendees/<<id>>/tickets",
-                "headers": [],
-                "params": [],
-                "body": {
-                  "contentType": null,
-                  "body": null
-                },
-                "auth": {
-                  "authType": "none",
-                  "authActive": true
-                },
-                "requestVariables": [
-                  {
-                    "key": "id",
-                    "value": "69e6aff05d885501e420b56",
-                    "active": true
-                  }
-                ]
-              },
-              "status": "Not Found",
-              "code": 404,
-              "headers": [
-                {
-                  "key": "access-control-allow-origin",
-                  "value": "http://localhost:5173"
-                },
-                {
-                  "key": "connection",
-                  "value": "keep-alive"
-                },
-                {
-                  "key": "content-length",
-                  "value": "48"
-                },
-                {
-                  "key": "content-security-policy",
-                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-                },
-                {
-                  "key": "content-type",
-                  "value": "application/json; charset=utf-8"
-                },
-                {
-                  "key": "cross-origin-opener-policy",
-                  "value": "same-origin"
-                },
-                {
-                  "key": "cross-origin-resource-policy",
-                  "value": "same-origin"
-                },
-                {
-                  "key": "date",
-                  "value": "Fri, 24 Apr 2026 22:23:47 GMT"
-                },
-                {
-                  "key": "etag",
-                  "value": "W/\"30-rfXNN9D4GFyk6qfET7IqMTK5UvY\""
-                },
-                {
-                  "key": "keep-alive",
-                  "value": "timeout=5"
-                },
-                {
-                  "key": "origin-agent-cluster",
-                  "value": "?1"
-                },
-                {
-                  "key": "referrer-policy",
-                  "value": "no-referrer"
-                },
-                {
-                  "key": "strict-transport-security",
-                  "value": "max-age=31536000; includeSubDomains"
-                },
-                {
-                  "key": "vary",
-                  "value": "Origin"
-                },
-                {
-                  "key": "x-content-type-options",
-                  "value": "nosniff"
-                },
-                {
-                  "key": "x-dns-prefetch-control",
-                  "value": "off"
-                },
-                {
-                  "key": "x-download-options",
-                  "value": "noopen"
-                },
-                {
-                  "key": "x-frame-options",
-                  "value": "SAMEORIGIN"
-                },
-                {
-                  "key": "x-permitted-cross-domain-policies",
-                  "value": "none"
-                },
-                {
-                  "key": "x-xss-protection",
-                  "value": "0"
-                }
-              ],
-              "body": "{\"success\":false,\"message\":\"Resource not found\"}"
-            },
             "Success": {
               "name": "Success",
               "originalRequest": {
@@ -2110,6 +2217,117 @@
                 }
               ],
               "body": "{\"success\":true,\"data\":[{\"_id\":\"69e6b0985d885501e420b56c\",\"event\":null,\"attendee\":\"69e6aff05d885501e420b56a\",\"type\":\"General\",\"price\":1000,\"status\":\"cancelled\",\"createdAt\":\"2026-04-20T23:02:48.715Z\",\"updatedAt\":\"2026-04-20T23:03:00.948Z\",\"__v\":0},{\"_id\":\"69ebec921c8f6ed418cfaa5e\",\"event\":{\"_id\":\"69ea5d085bf81d8b9c871150\",\"title\":\"Sabaton\",\"date\":\"2025-12-17T20:00:00.000Z\",\"location\":\"Royal Arena, Copenhagen\",\"status\":\"completed\"},\"attendee\":\"69e6aff05d885501e420b56a\",\"type\":\"General\",\"status\":\"active\",\"createdAt\":\"2026-04-24T22:20:02.306Z\",\"updatedAt\":\"2026-04-24T22:20:02.306Z\",\"__v\":0}]}"
+            },
+            "Not found": {
+              "name": "Not found",
+              "originalRequest": {
+                "v": "6",
+                "name": "Get attendee tickets",
+                "method": "GET",
+                "endpoint": "<<url>>/attendees/<<id>>/tickets",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69e6aff05d885501e420b56",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "Not Found",
+              "code": 404,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "48"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 22:23:47 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"30-rfXNN9D4GFyk6qfET7IqMTK5UvY\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":false,\"message\":\"Resource not found\"}"
             }
           },
           "description": null
@@ -2389,117 +2607,6 @@
             }
           ],
           "responses": {
-            "Success": {
-              "name": "Success",
-              "originalRequest": {
-                "v": "6",
-                "name": "Delete attendee",
-                "method": "DELETE",
-                "endpoint": "<<url>>/attendees/<<id>>",
-                "headers": [],
-                "params": [],
-                "body": {
-                  "contentType": null,
-                  "body": null
-                },
-                "auth": {
-                  "authType": "none",
-                  "authActive": true
-                },
-                "requestVariables": [
-                  {
-                    "key": "id",
-                    "value": "69ebff36ec0d3ea5fd7b5540",
-                    "active": true
-                  }
-                ]
-              },
-              "status": "OK",
-              "code": 200,
-              "headers": [
-                {
-                  "key": "access-control-allow-origin",
-                  "value": "http://localhost:5173"
-                },
-                {
-                  "key": "connection",
-                  "value": "keep-alive"
-                },
-                {
-                  "key": "content-length",
-                  "value": "26"
-                },
-                {
-                  "key": "content-security-policy",
-                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-                },
-                {
-                  "key": "content-type",
-                  "value": "application/json; charset=utf-8"
-                },
-                {
-                  "key": "cross-origin-opener-policy",
-                  "value": "same-origin"
-                },
-                {
-                  "key": "cross-origin-resource-policy",
-                  "value": "same-origin"
-                },
-                {
-                  "key": "date",
-                  "value": "Fri, 24 Apr 2026 23:40:21 GMT"
-                },
-                {
-                  "key": "etag",
-                  "value": "W/\"1a-pIPrt4esgEyEkX/w62Rnrj9XXdg\""
-                },
-                {
-                  "key": "keep-alive",
-                  "value": "timeout=5"
-                },
-                {
-                  "key": "origin-agent-cluster",
-                  "value": "?1"
-                },
-                {
-                  "key": "referrer-policy",
-                  "value": "no-referrer"
-                },
-                {
-                  "key": "strict-transport-security",
-                  "value": "max-age=31536000; includeSubDomains"
-                },
-                {
-                  "key": "vary",
-                  "value": "Origin"
-                },
-                {
-                  "key": "x-content-type-options",
-                  "value": "nosniff"
-                },
-                {
-                  "key": "x-dns-prefetch-control",
-                  "value": "off"
-                },
-                {
-                  "key": "x-download-options",
-                  "value": "noopen"
-                },
-                {
-                  "key": "x-frame-options",
-                  "value": "SAMEORIGIN"
-                },
-                {
-                  "key": "x-permitted-cross-domain-policies",
-                  "value": "none"
-                },
-                {
-                  "key": "x-xss-protection",
-                  "value": "0"
-                }
-              ],
-              "body": "{\"success\":true,\"data\":{}}"
-            },
             "Not found": {
               "name": "Not found",
               "originalRequest": {
@@ -2610,6 +2717,117 @@
                 }
               ],
               "body": "{\"success\":false,\"message\":\"Attendee not found\"}"
+            },
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "Delete attendee",
+                "method": "DELETE",
+                "endpoint": "<<url>>/attendees/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebff36ec0d3ea5fd7b5540",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "OK",
+              "code": 200,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "26"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 23:40:21 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"1a-pIPrt4esgEyEkX/w62Rnrj9XXdg\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{}}"
             }
           },
           "description": null
@@ -2643,7 +2861,7 @@
           },
           "body": {
             "contentType": "application/json",
-            "body": "{\n  \"event\": \"69ea5c4e5bf81d8b9c87114f\",\n  \"attendee\": \"69e6aff05d885501e420b56a\",\n  \"type\": \"wrong\"\n}\n"
+            "body": "{\n  \"event\": \"69ede1c999466f326b8373dd\",\n  \"attendee\": \"69ebf31fec0d3ea5fd7b553c\",\n  \"type\": \"General\"\n}\n"
           },
           "requestVariables": [
             {
@@ -2763,6 +2981,117 @@
                 }
               ],
               "body": "{\"success\":true,\"data\":{\"event\":\"69ea5c4e5bf81d8b9c87114f\",\"attendee\":\"69e6aff05d885501e420b56a\",\"type\":\"General\",\"status\":\"active\",\"_id\":\"69ec02beec0d3ea5fd7b5544\",\"createdAt\":\"2026-04-24T23:54:38.169Z\",\"updatedAt\":\"2026-04-24T23:54:38.169Z\",\"__v\":0}}"
+            },
+            "Wrong payload": {
+              "name": "Wrong payload",
+              "originalRequest": {
+                "v": "6",
+                "name": "Create ticket",
+                "method": "POST",
+                "endpoint": "<<url>>/tickets",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": "application/json",
+                  "body": "{\n  \"event\": \"69ea5c4e5bf81d8b9c87114f\",\n  \"attendee\": \"69e6aff05d885501e420b56a\",\n  \"type\": \"wrong\"\n}\n"
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebec921c8f6ed418cfaa50",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "90"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 23:56:04 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"5a-CIaC5PoVec9Ut1eVP6NmkZw/PnM\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":false,\"message\":\"Validation failed\",\"errors\":{\"type\":\"Invalid value for type\"}}"
             },
             "No event": {
               "name": "No event",
@@ -2986,8 +3315,8 @@
               ],
               "body": "{\"success\":false,\"message\":\"Attendee not found\"}"
             },
-            "Wrong payload": {
-              "name": "Wrong payload",
+            "Event overflow": {
+              "name": "Event overflow",
               "originalRequest": {
                 "v": "6",
                 "name": "Create ticket",
@@ -2997,7 +3326,7 @@
                 "params": [],
                 "body": {
                   "contentType": "application/json",
-                  "body": "{\n  \"event\": \"69ea5c4e5bf81d8b9c87114f\",\n  \"attendee\": \"69e6aff05d885501e420b56a\",\n  \"type\": \"wrong\"\n}\n"
+                  "body": "{\n  \"event\": \"69ede1c999466f326b8373dd\",\n  \"attendee\": \"69ebf31fec0d3ea5fd7b553c\",\n  \"type\": \"General\"\n}\n"
                 },
                 "auth": {
                   "authType": "none",
@@ -3024,7 +3353,7 @@
                 },
                 {
                   "key": "content-length",
-                  "value": "90"
+                  "value": "63"
                 },
                 {
                   "key": "content-security-policy",
@@ -3044,11 +3373,11 @@
                 },
                 {
                   "key": "date",
-                  "value": "Fri, 24 Apr 2026 23:56:04 GMT"
+                  "value": "Sun, 26 Apr 2026 10:02:32 GMT"
                 },
                 {
                   "key": "etag",
-                  "value": "W/\"5a-CIaC5PoVec9Ut1eVP6NmkZw/PnM\""
+                  "value": "W/\"3f-lDH22mReFOS59VRNVABNRYruWjw\""
                 },
                 {
                   "key": "keep-alive",
@@ -3095,7 +3424,7 @@
                   "value": "0"
                 }
               ],
-              "body": "{\"success\":false,\"message\":\"Validation failed\",\"errors\":{\"type\":\"Invalid value for type\"}}"
+              "body": "{\"success\":false,\"message\":\"Event has no more siting capacity\"}"
             }
           },
           "description": null
@@ -3252,117 +3581,6 @@
             }
           ],
           "responses": {
-            "Success": {
-              "name": "Success",
-              "originalRequest": {
-                "v": "6",
-                "name": "Get ticket",
-                "method": "GET",
-                "endpoint": "<<url>>/tickets/<<id>>",
-                "headers": [],
-                "params": [],
-                "body": {
-                  "contentType": null,
-                  "body": null
-                },
-                "auth": {
-                  "authType": "none",
-                  "authActive": true
-                },
-                "requestVariables": [
-                  {
-                    "key": "id",
-                    "value": "69ebec921c8f6ed418cfaa5e",
-                    "active": true
-                  }
-                ]
-              },
-              "status": "OK",
-              "code": 200,
-              "headers": [
-                {
-                  "key": "access-control-allow-origin",
-                  "value": "http://localhost:5173"
-                },
-                {
-                  "key": "connection",
-                  "value": "keep-alive"
-                },
-                {
-                  "key": "content-length",
-                  "value": "456"
-                },
-                {
-                  "key": "content-security-policy",
-                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-                },
-                {
-                  "key": "content-type",
-                  "value": "application/json; charset=utf-8"
-                },
-                {
-                  "key": "cross-origin-opener-policy",
-                  "value": "same-origin"
-                },
-                {
-                  "key": "cross-origin-resource-policy",
-                  "value": "same-origin"
-                },
-                {
-                  "key": "date",
-                  "value": "Fri, 24 Apr 2026 23:46:06 GMT"
-                },
-                {
-                  "key": "etag",
-                  "value": "W/\"1c8-R0+7+zDpAWc1MBsP6JyzHD6TAOo\""
-                },
-                {
-                  "key": "keep-alive",
-                  "value": "timeout=5"
-                },
-                {
-                  "key": "origin-agent-cluster",
-                  "value": "?1"
-                },
-                {
-                  "key": "referrer-policy",
-                  "value": "no-referrer"
-                },
-                {
-                  "key": "strict-transport-security",
-                  "value": "max-age=31536000; includeSubDomains"
-                },
-                {
-                  "key": "vary",
-                  "value": "Origin"
-                },
-                {
-                  "key": "x-content-type-options",
-                  "value": "nosniff"
-                },
-                {
-                  "key": "x-dns-prefetch-control",
-                  "value": "off"
-                },
-                {
-                  "key": "x-download-options",
-                  "value": "noopen"
-                },
-                {
-                  "key": "x-frame-options",
-                  "value": "SAMEORIGIN"
-                },
-                {
-                  "key": "x-permitted-cross-domain-policies",
-                  "value": "none"
-                },
-                {
-                  "key": "x-xss-protection",
-                  "value": "0"
-                }
-              ],
-              "body": "{\"success\":true,\"data\":{\"_id\":\"69ebec921c8f6ed418cfaa5e\",\"event\":{\"_id\":\"69ea5d085bf81d8b9c871150\",\"title\":\"Sabaton\",\"date\":\"2025-12-17T20:00:00.000Z\",\"location\":\"Royal Arena, Copenhagen\",\"status\":\"completed\"},\"attendee\":{\"_id\":\"69e6aff05d885501e420b56a\",\"name\":\"Timur Ramazanov\",\"email\":\"timurram007@gmail.com\",\"phone\":\"0769170365\"},\"type\":\"General\",\"status\":\"active\",\"createdAt\":\"2026-04-24T22:20:02.306Z\",\"updatedAt\":\"2026-04-24T22:20:02.306Z\",\"__v\":0}}"
-            },
             "Not found": {
               "name": "Not found",
               "originalRequest": {
@@ -3473,47 +3691,19 @@
                 }
               ],
               "body": "{\"success\":false,\"message\":\"Resource not found\"}"
-            }
-          },
-          "description": null
-        },
-        {
-          "v": "17",
-          "name": "Edit ticket",
-          "method": "PATCH",
-          "endpoint": "<<url>>/tickets/<<id>>",
-          "params": [],
-          "headers": [],
-          "preRequestScript": "",
-          "testScript": "",
-          "auth": {
-            "authType": "inherit",
-            "authActive": true
-          },
-          "body": {
-            "contentType": "application/json",
-            "body": "{\n  \"status\": \"cancelled\"\n}\n"
-          },
-          "requestVariables": [
-            {
-              "key": "id",
-              "value": "69ebec921c8f6ed418cfaa50",
-              "active": true
-            }
-          ],
-          "responses": {
+            },
             "Success": {
               "name": "Success",
               "originalRequest": {
                 "v": "6",
-                "name": "Delete ticket - Duplicate",
-                "method": "PATCH",
+                "name": "Get ticket",
+                "method": "GET",
                 "endpoint": "<<url>>/tickets/<<id>>",
                 "headers": [],
                 "params": [],
                 "body": {
-                  "contentType": "application/json",
-                  "body": "{\n  \"status\": \"cancelled\"\n}\n"
+                  "contentType": null,
+                  "body": null
                 },
                 "auth": {
                   "authType": "none",
@@ -3540,7 +3730,7 @@
                 },
                 {
                   "key": "content-length",
-                  "value": "255"
+                  "value": "456"
                 },
                 {
                   "key": "content-security-policy",
@@ -3560,11 +3750,11 @@
                 },
                 {
                   "key": "date",
-                  "value": "Fri, 24 Apr 2026 23:52:31 GMT"
+                  "value": "Fri, 24 Apr 2026 23:46:06 GMT"
                 },
                 {
                   "key": "etag",
-                  "value": "W/\"ff-dtsKEpXhPTU3MSIJSD58ktlLPi8\""
+                  "value": "W/\"1c8-R0+7+zDpAWc1MBsP6JyzHD6TAOo\""
                 },
                 {
                   "key": "keep-alive",
@@ -3611,8 +3801,36 @@
                   "value": "0"
                 }
               ],
-              "body": "{\"success\":true,\"data\":{\"_id\":\"69ebec921c8f6ed418cfaa5e\",\"event\":\"69ea5d085bf81d8b9c871150\",\"attendee\":\"69e6aff05d885501e420b56a\",\"type\":\"General\",\"status\":\"cancelled\",\"createdAt\":\"2026-04-24T22:20:02.306Z\",\"updatedAt\":\"2026-04-24T23:52:31.299Z\",\"__v\":0}}"
-            },
+              "body": "{\"success\":true,\"data\":{\"_id\":\"69ebec921c8f6ed418cfaa5e\",\"event\":{\"_id\":\"69ea5d085bf81d8b9c871150\",\"title\":\"Sabaton\",\"date\":\"2025-12-17T20:00:00.000Z\",\"location\":\"Royal Arena, Copenhagen\",\"status\":\"completed\"},\"attendee\":{\"_id\":\"69e6aff05d885501e420b56a\",\"name\":\"Timur Ramazanov\",\"email\":\"timurram007@gmail.com\",\"phone\":\"0769170365\"},\"type\":\"General\",\"status\":\"active\",\"createdAt\":\"2026-04-24T22:20:02.306Z\",\"updatedAt\":\"2026-04-24T22:20:02.306Z\",\"__v\":0}}"
+            }
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Edit ticket",
+          "method": "PATCH",
+          "endpoint": "<<url>>/tickets/<<id>>",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"status\": \"cancelled\"\n}\n"
+          },
+          "requestVariables": [
+            {
+              "key": "id",
+              "value": "69ebec921c8f6ed418cfaa50",
+              "active": true
+            }
+          ],
+          "responses": {
             "Not found": {
               "name": "Not found",
               "originalRequest": {
@@ -3723,6 +3941,117 @@
                 }
               ],
               "body": "{\"success\":false,\"message\":\"Ticket not found\"}"
+            },
+            "Success": {
+              "name": "Success",
+              "originalRequest": {
+                "v": "6",
+                "name": "Delete ticket - Duplicate",
+                "method": "PATCH",
+                "endpoint": "<<url>>/tickets/<<id>>",
+                "headers": [],
+                "params": [],
+                "body": {
+                  "contentType": "application/json",
+                  "body": "{\n  \"status\": \"cancelled\"\n}\n"
+                },
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "requestVariables": [
+                  {
+                    "key": "id",
+                    "value": "69ebec921c8f6ed418cfaa5e",
+                    "active": true
+                  }
+                ]
+              },
+              "status": "OK",
+              "code": 200,
+              "headers": [
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "content-length",
+                  "value": "255"
+                },
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "date",
+                  "value": "Fri, 24 Apr 2026 23:52:31 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"ff-dtsKEpXhPTU3MSIJSD58ktlLPi8\""
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{\"_id\":\"69ebec921c8f6ed418cfaa5e\",\"event\":\"69ea5d085bf81d8b9c871150\",\"attendee\":\"69e6aff05d885501e420b56a\",\"type\":\"General\",\"status\":\"cancelled\",\"createdAt\":\"2026-04-24T22:20:02.306Z\",\"updatedAt\":\"2026-04-24T23:52:31.299Z\",\"__v\":0}}"
             }
           },
           "description": null
@@ -3989,8 +4318,8 @@
   ],
   "requests": [],
   "auth": {
-    "authType": "none",
-    "authActive": true
+    "authActive": true,
+    "authType": "none"
   },
   "headers": [],
   "variables": [],
