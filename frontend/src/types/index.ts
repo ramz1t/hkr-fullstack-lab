@@ -1,3 +1,8 @@
+export interface User {
+    _id: string
+    email: string
+}
+
 export interface Event {
     _id: string
     title: string

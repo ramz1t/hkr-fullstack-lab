@@ -1,5 +1,7 @@
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
 
+const TOKEN_KEY = 'auth_token'
+
 interface ApiResponse<T> {
     success: boolean
     data: T
@@ -24,9 +26,11 @@ export async function apiFetch<T>(
         ).toString()
         if (qs) url += `?${qs}`
     }
+    const token = localStorage.getItem(TOKEN_KEY)
     const res = await fetch(url, {
         headers: {
             'Content-Type': 'application/json',
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
             ...init.headers,
         },
         ...init,
