@@ -1,9 +1,10 @@
 const { Attendee } = require('../models')
 const { Ticket } = require('../models')
+const isOwner = require('../utils/isOwner')
 
 const getAllAttendees = async (req, res, next) => {
     try {
-        const attendees = await Attendee.find().sort({ name: 1 })
+        const attendees = await Attendee.find({ scoped_to: req.user._id }).sort({ name: 1 })
         res.json({ success: true, data: attendees })
     } catch (err) {
         next(err)
@@ -13,9 +14,8 @@ const getAllAttendees = async (req, res, next) => {
 const getAttendeeById = async (req, res, next) => {
     try {
         const attendee = await Attendee.findById(req.params.id)
-        if (!attendee) {
-            return res.status(404).json({ success: false, message: 'Attendee not found' })
-        }
+        if (!attendee) return res.status(404).json({ success: false, message: 'Attendee not found' })
+        if (!isOwner(attendee, req.user._id, res)) return
         res.json({ success: true, data: attendee })
     } catch (err) {
         next(err)
@@ -24,7 +24,7 @@ const getAttendeeById = async (req, res, next) => {
 
 const createAttendee = async (req, res, next) => {
     try {
-        const attendee = await Attendee.create(req.body)
+        const attendee = await Attendee.create({ ...req.body, scoped_to: req.user._id })
         res.status(201).json({ success: true, data: attendee })
     } catch (err) {
         next(err)
@@ -33,13 +33,13 @@ const createAttendee = async (req, res, next) => {
 
 const updateAttendee = async (req, res, next) => {
     try {
+        const existing = await Attendee.findById(req.params.id)
+        if (!existing) return res.status(404).json({ success: false, message: 'Attendee not found' })
+        if (!isOwner(existing, req.user._id, res)) return
         const attendee = await Attendee.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
             runValidators: true,
         })
-        if (!attendee) {
-            return res.status(404).json({ success: false, message: 'Attendee not found' })
-        }
         res.json({ success: true, data: attendee })
     } catch (err) {
         next(err)
@@ -48,10 +48,10 @@ const updateAttendee = async (req, res, next) => {
 
 const deleteAttendee = async (req, res, next) => {
     try {
-        const attendee = await Attendee.findByIdAndDelete(req.params.id)
-        if (!attendee) {
-            return res.status(404).json({ success: false, message: 'Attendee not found' })
-        }
+        const attendee = await Attendee.findById(req.params.id)
+        if (!attendee) return res.status(404).json({ success: false, message: 'Attendee not found' })
+        if (!isOwner(attendee, req.user._id, res)) return
+        await Attendee.findByIdAndDelete(req.params.id)
         res.json({ success: true, data: {} })
     } catch (err) {
         next(err)
@@ -61,10 +61,9 @@ const deleteAttendee = async (req, res, next) => {
 const getAttendeeTickets = async (req, res, next) => {
     try {
         const attendee = await Attendee.findById(req.params.id)
-        if (!attendee) {
-            return res.status(404).json({ success: false, message: 'Attendee not found' })
-        }
-        const tickets = await Ticket.find({ attendee: req.params.id }).populate(
+        if (!attendee) return res.status(404).json({ success: false, message: 'Attendee not found' })
+        if (!isOwner(attendee, req.user._id, res)) return
+        const tickets = await Ticket.find({ attendee: req.params.id, scoped_to: req.user._id }).populate(
             'event',
             'title date location status'
         )
